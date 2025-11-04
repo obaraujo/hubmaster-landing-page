@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 
 <head>
 	<meta charset="utf-8" />
@@ -7,453 +7,256 @@
 	<title>HubMaster — Painel Negócios</title>
 	<meta name="description"
 		content="Conheça o HubMaster e o Painel Negócios: centralize cadastros, monitore NFC-e, automatize alertas e ofereça serviços como Consulta Preço e Minha Oferta." />
+
+	<!-- Tailwind CSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Configuração Personalizada do Tailwind (Padrão) -->
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['Inter', 'sans-serif'],
+					},
+					colors: {
+						// Cor de fundo escura principal
+						dark: {
+							900: '#09090b', // Fundo principal
+							800: '#1a1a1f', // Cards e elementos
+							700: '#2a2a2f', // Bordas
+						},
+						// Cor primária vibrante (inspirada no logo)
+						primary: {
+							500: '#6d28d9', // Roxo principal (botões)
+							600: '#5b21b6', // Hover
+							700: '#4c1d95', // Mais escuro
+						},
+					},
+				},
+			},
+		}
+	</script>
+	<!-- Google Fonts - Inter -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
 	<style>
-		:root {
-			--bg: #0f1115;
-			--panel: #151821;
-			--muted: #97a0b3;
-			--text: #e6e8f0;
-			--brand: #8e7df0;
-			/* roxo suave */
-			--brand-2: #22c55e;
-			/* verde status */
-			--alert: #ef4444;
-			/* vermelho alerta */
-			--card: #0d0f14;
-			--line: #202534;
-			--shadow: 0 10px 30px rgba(0, 0, 0, .35);
-			--radius: 16px;
-			--radius-sm: 12px;
-			--pad: clamp(16px, 3vw, 28px);
-			--max: 1180px;
-		}
-
-		* {
-			box-sizing: border-box
-		}
-
-		html,
+		/* Define a fonte Inter como padrão */
 		body {
-			background: var(--bg);
-			color: var(--text);
-			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-			line-height: 1.6
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none
-		}
-
-		.container {
-			max-width: var(--max);
-			margin: 0 auto;
-			padding: 0 var(--pad)
-		}
-
-		.btn {
-			display: inline-flex;
-			align-items: center;
-			gap: .6rem;
-			padding: .9rem 1.2rem;
-			border-radius: 12px;
-			font-weight: 600;
-			background: var(--brand);
-			color: #0c0c10;
-			box-shadow: var(--shadow);
-			border: 1px solid #a79bf6
-		}
-
-		.btn.alt {
-			background: #1d2230;
-			color: var(--text);
-			border-color: #2a3145
-		}
-
-		.muted {
-			color: var(--muted)
-		}
-
-		.tag {
-			display: inline-flex;
-			align-items: center;
-			gap: .45rem;
-			padding: .3rem .6rem;
-			border-radius: 999px;
-			font-size: .85rem;
-			background: #1d2230;
-			border: 1px solid #2a3145
-		}
-
-		.tag.ok {
-			background: rgba(34, 197, 94, .12);
-			border-color: rgba(34, 197, 94, .45);
-			color: #86efac
-		}
-
-		.tag.alert {
-			background: rgba(239, 68, 68, .12);
-			border-color: rgba(239, 68, 68, .45);
-			color: #fca5a5
-		}
-
-		.grid {
-			display: grid;
-			gap: 18px
-		}
-
-		.hero {
-			padding: clamp(42px, 6vw, 80px) 0
-		}
-
-		.hero .wrap {
-			display: grid;
-			gap: 24px
-		}
-
-		.headline {
-			font-size: clamp(28px, 3.2vw, 44px);
-			line-height: 1.15;
-			font-weight: 800;
-			letter-spacing: -.01em
-		}
-
-		.sub {
-			font-size: clamp(15px, 1.6vw, 18px);
-			color: var(--muted)
-		}
-
-		.hero-cta {
-			display: flex;
-			gap: 12px;
-			flex-wrap: wrap;
-			margin-top: 8px
-		}
-
-		.shot {
-			background: linear-gradient(180deg, #1a1f2d, #0f1115);
-			border: 1px solid var(--line);
-			border-radius: var(--radius);
-			padding: 0;
-			overflow: hidden;
-			box-shadow: var(--shadow)
-		}
-
-		.shot img {
-			display: block;
-			width: 100%;
-			height: auto
-		}
-
-		.section {
-			padding: clamp(40px, 6vw, 72px) 0;
-			border-top: 1px solid var(--line)
-		}
-
-		h2 {
-			font-size: clamp(22px, 2.6vw, 32px);
-			letter-spacing: -.01em;
-			margin: 0 0 14px
-		}
-
-		.cards {
-			display: grid;
-			grid-template-columns: repeat(12, 1fr);
-			gap: 18px;
-			margin-top: 18px
-		}
-
-		.card {
-			grid-column: span 12;
-			background: var(--panel);
-			border: 1px solid var(--line);
-			border-radius: var(--radius);
-			padding: 18px 18px;
-			box-shadow: var(--shadow)
-		}
-
-		@media (min-width:720px) {
-			.cards .card {
-				grid-column: span 6
-			}
-		}
-
-		@media (min-width:1024px) {
-			.cards .card {
-				grid-column: span 4
-			}
-		}
-
-		.card h3 {
-			margin: 0 0 8px;
-			font-size: 1.05rem
-		}
-
-		.card p {
-			margin: 0;
-			color: var(--muted)
-		}
-
-		.stack {
-			display: grid;
-			gap: 14px
-		}
-
-		.pill {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 12px 14px;
-			border: 1px solid var(--line);
-			border-radius: 12px;
-			background: var(--card)
-		}
-
-		.kpi {
-			display: flex;
-			align-items: center;
-			gap: 10px
-		}
-
-		.kpi .dot {
-			width: 9px;
-			height: 9px;
-			border-radius: 999px;
-			background: var(--brand)
-		}
-
-		.kpi .dot.ok {
-			background: var(--brand-2)
-		}
-
-		.kpi .dot.alert {
-			background: var(--alert)
-		}
-
-		.list {
-			margin: 8px 0 0;
-			padding-left: 18px;
-			color: var(--muted)
-		}
-
-		.list li {
-			margin: .3rem 0
-		}
-
-		.cta-box {
-			display: flex;
-			gap: 12px;
-			flex-wrap: wrap;
-			margin-top: 16px
-		}
-
-		.footer {
-			padding: 36px 0;
-			color: #9aa3b7;
-			text-align: center;
-			border-top: 1px solid var(--line);
-			font-size: .95rem
-		}
-
-		/* sticky header */
-		.topbar {
-			position: sticky;
-			top: 0;
-			z-index: 20;
-			background: rgba(15, 17, 21, .8);
-			backdrop-filter: saturate(140%) blur(10px);
-			border-bottom: 1px solid var(--line)
-		}
-
-		.topbar .inner {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			height: 60px
-		}
-
-		.logo {
-			display: flex;
-			align-items: center;
-			gap: .6rem;
-			font-weight: 800
-		}
-
-		.logo .mark {
-			width: 28px;
-			height: 28px;
-			border-radius: 8px;
-			background: linear-gradient(135deg, var(--brand), #b9b0ff)
-		}
-
-		.table {
-			overflow: auto;
-			border: 1px solid var(--line);
-			border-radius: 12px
-		}
-
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			font-size: .95rem
-		}
-
-		th,
-		td {
-			padding: 12px 14px;
-			border-bottom: 1px solid #1e2230;
-			white-space: nowrap
-		}
-
-		th {
-			color: #a7b0c7;
-			text-align: left;
-			font-weight: 600;
-			background: #121520;
-			position: sticky;
-			top: 0
-		}
-
-		tr:hover td {
-			background: #10131b
+			font-family: 'Inter', sans-serif;
 		}
 	</style>
 </head>
 
-<body>
+<body class="antialiased bg-dark-900 text-zinc-100">
 
 	<!-- TOPO -->
-	<header class="topbar">
-		<div class="container inner">
-			<div class="logo"><span class="mark"></span> HubMaster</div>
-			<nav class="muted"><a href="#negocios">Painel Negócios</a> · <a href="#modulos">Serviços</a> · <a
-					href="https://hubmaster.com.br" target="_blank" rel="noopener">Site</a></nav>
-		</div>
+	<header class="sticky top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
+		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+				<!-- Logo -->
+				<div class="flex-shrink-0">
+					<a href="/" title="HubMaster" class="flex items-center gap-2 font-extrabold text-white">
+						<img src="/logo-full.png" class="h-8">
+					</a>
+				</div>
+				<!-- Links -->
+				<div class="hidden md:flex items-center space-x-6 text-zinc-300 text-sm font-medium">
+					<a href="#negocios" class="hover:text-white transition-colors">Painel Negócios</a>
+					<a href="#modulos" class="hover:text-white transition-colors">Serviços</a>
+					<a href="/" rel="noopener" class="hover:text-white transition-colors">Site</a>
+				</div>
+			</div>
+		</nav>
 	</header>
 
 	<!-- HERO -->
-	<section class="hero">
-		<div class="container wrap">
-			<div>
-				<div class="tag">Plataforma para Revendas</div>
-				<h1 class="headline">Centralize sua base, monitore a operação e gere valor com o <span
-						style="color:#c5bcff">Painel Negócios</span>.</h1>
-				<p class="sub">O HubMaster conecta o <strong>Agente Hub</strong> aos servidores dos clientes, traz dados
-					críticos em tempo real (como <strong>NFC-e</strong>, estações ativas e versão do ERP) e habilita ações rápidas
-					de suporte e serviços.</p>
-				<div class="hero-cta">
-					<a class="btn" href="#negocios">Ver como funciona</a>
-					<a class="btn alt" href="https://hubmaster.com.br" target="_blank" rel="noopener">Ir para hubmaster.com.br</a>
+	<section class="hero py-20 sm:py-28">
+		<div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+				<div>
+					<div
+						class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-primary-500/10 text-primary-400 border border-primary-500/30 mb-4">
+						Plataforma para Revendas</div>
+					<h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">Centralize sua base, monitore a
+						operação e gere valor com o <span class="text-purple-300">Painel Negócios</span>.</h1>
+					<p class="text-lg text-zinc-400 max-w-lg">O HubMaster conecta o <strong>Agente Hub</strong> aos servidores dos
+						clientes, traz dados
+						críticos em tempo real (como <strong>NFC-e</strong>, estações ativas e versão do ERP) e habilita ações
+						rápidas
+						de suporte e serviços.</p>
+					<div class="flex gap-4 flex-wrap mt-8">
+						<a class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 transition-all transform hover:scale-105"
+							href="#negocios">Ver como funciona</a>
+						<a class="inline-flex items-center justify-center px-6 py-3 border border-zinc-700 text-base font-semibold rounded-lg text-zinc-300 bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
+							href="/" rel="noopener">Ir para hubmaster.com.br</a>
+					</div>
 				</div>
-			</div>
-			<div class="shot">
-				<!-- Substitua pelo seu print do dashboard -->
-				<img src="Dashboard.png" alt="HubMaster - Dashboard" />
+				<div class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 overflow-hidden">
+					<img src="dashboard.png" alt="HubMaster - Dashboard" class="block w-full h-auto" />
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- PAINEL NEGÓCIOS -->
-	<section id="negocios" class="section">
-		<div class="container">
-			<h2>Painel Negócios — visão unificada dos clientes</h2>
-			<p class="muted">Cadastros centralizados, status do agente, NFC-e em evidência, estações ativas e acesso completo
-				ao perfil do cliente.</p>
+	<section id="negocios" class="py-20 sm:py-28 border-t border-zinc-800">
+		<div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Painel Negócios — visão unificada dos clientes
+				</h2>
+				<p class="text-lg text-zinc-400 mb-12">Cadastros centralizados, status do agente, NFC-e em evidência, estações
+					ativas e acesso completo
+					ao perfil do cliente.</p>
+			</div>
 
-			<div class="cards">
-				<article class="card">
-					<h3>Informações-chave por empresa</h3>
-					<p>CNPJ, Razão Social, Fantasia, Revenda, Contabilidade, ERP e versões. Tudo em um só lugar.</p>
-					<ul class="list">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<article
+					class="bg-dark-800 border border-zinc-700 p-6 rounded-2xl shadow-lg transition-all duration-300 hover:border-primary-500/50 transform hover:-translate-y-1">
+					<h3 class="text-xl font-semibold text-white mb-2">Informações-chave por empresa</h3>
+					<p class="text-zinc-400">CNPJ, Razão Social, Fantasia, Revenda, Contabilidade, ERP e versões. Tudo em um só
+						lugar.</p>
+					<ul class="mt-4 space-y-2 list-disc list-inside text-zinc-400">
 						<li>Status do Agente (online/offline)</li>
 						<li>Estações ativas</li>
 						<li>NFC-e em contingência (destaque visual)</li>
 					</ul>
 				</article>
-				<article class="card">
-					<h3>Alertas inteligentes</h3>
-					<p>Se houver pendências de NFC-e, a plataforma dispara <strong>alerta automático via WhatsApp</strong> para o
+				<article
+					class="bg-dark-800 border border-zinc-700 p-6 rounded-2xl shadow-lg transition-all duration-300 hover:border-primary-500/50 transform hover:-translate-y-1">
+					<h3 class="text-xl font-semibold text-white mb-2">Alertas inteligentes</h3>
+					<p class="text-zinc-400">Se houver pendências de NFC-e, a plataforma dispara <strong>alerta automático via
+							WhatsApp</strong> para o
 						cliente.</p>
-					<div class="stack" style="margin-top:10px">
-						<div class="pill"><span class="kpi"><span class="dot alert"></span>Pendências NFC-e</span><span
-								class="tag alert">Ação imediata</span></div>
-						<div class="pill"><span class="kpi"><span class="dot ok"></span>Cliente notificado</span><span
-								class="tag ok">WhatsApp enviado</span></div>
+					<div class="space-y-4 mt-4">
+						<div class="flex justify-between items-center p-3 border border-zinc-700 rounded-lg bg-dark-900">
+							<span class="flex items-center gap-3 font-medium text-white"><span
+									class="w-2.5 h-2.5 rounded-full bg-red-500"></span>Pendências NFC-e</span>
+							<span
+								class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/30">Ação
+								imediata</span>
+						</div>
+						<div class="flex justify-between items-center p-3 border border-zinc-700 rounded-lg bg-dark-900">
+							<span class="flex items-center gap-3 font-medium text-white"><span
+									class="w-2.5 h-2.5 rounded-full bg-green-500"></span>Cliente notificado</span>
+							<span
+								class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/30">WhatsApp
+								enviado</span>
+						</div>
 					</div>
 				</article>
-				<article class="card">
-					<h3>Ações rápidas</h3>
-					<p>Direto do topo do cadastro: <strong>Bloquear/Liberar</strong> sistema, <strong>Consultar
-							Pendências</strong>, <strong>Contrato</strong> e <strong>Contábil</strong>.</p>
-					<div class="cta-box">
-						<span class="tag">Bloquear / Liberar</span>
-						<span class="tag">Contrato</span>
-						<span class="tag">Pendências NFC-e</span>
-						<span class="tag">Contábil</span>
+				<article
+					class="bg-dark-800 border border-zinc-700 p-6 rounded-2xl shadow-lg transition-all duration-300 hover:border-primary-500/50 transform hover:-translate-y-1">
+					<h3 class="text-xl font-semibold text-white mb-2">Ações rápidas</h3>
+					<p class="text-zinc-400">Direto do topo do cadastro: <strong>Bloquear/Liberar</strong> sistema,
+						<strong>Consultar
+							Pendências</strong>, <strong>Contrato</strong> e <strong>Contábil</strong>.
+					</p>
+					<div class="flex gap-2 flex-wrap mt-4">
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">Bloquear
+							/ Liberar</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">Contrato</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">Pendências
+							NFC-e</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">Contábil</span>
 					</div>
 				</article>
 			</div>
 
-			<div class="shot" style="margin-top:18px">
-				<!-- Substitua pelo seu print da tabela de negócios -->
-				<img src="painel_negocios.png" alt="Tabela de Negócios HubMaster" />
+			<div
+				class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 overflow-hidden mt-12">
+				<img src="Painel_negocios.png" alt="Tabela de Negócios HubMaster" class="block w-full h-auto" />
 			</div>
 		</div>
 	</section>
 
 	<!-- PERFIL DA EMPRESA -->
-	<section class="section">
-		<div class="container">
-			<h2>Visualização detalhada do cliente</h2>
-			<p class="muted">Ao clicar em <strong>Visualizar</strong>, você acessa dados completos: validade do certificado,
-				nomes das máquinas conectadas, log de conexão, e a lista de pendências NFC-e com a numeração exata.</p>
-			<div class="grid" style="grid-template-columns:1.15fr .85fr; gap:20px">
-				<div class="shot">
-					<!-- Substitua pelo print do detalhe do cliente -->
-					<img src="empresa.png" alt="Detalhe do Cliente - HubMaster" />
+	<section class="py-20 sm:py-28 border-t border-zinc-800">
+		<div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Visualização detalhada do cliente</h2>
+				<p class="text-lg text-zinc-400 mb-12">Ao clicar em <strong>Visualizar</strong>, você acessa dados completos:
+					validade do certificado,
+					nomes das máquinas conectadas, log de conexão, e a lista de pendências NFC-e com a numeração exata.</p>
+			</div>
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+				<div class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 overflow-hidden">
+					<img src="empresa.png" alt="Detalhe do Cliente - HubMaster" class="rounded-2xl block w-full h-auto" />
 				</div>
-				<div class="stack">
-					<div class="pill"><span>Certificado Digital</span><span class="tag ok">Válido</span></div>
-					<div class="pill"><span>Máquinas conectadas</span><span class="tag">CX04 · ESTOQUE · SERVIDOR…</span></div>
-					<div class="pill"><span>Versão do Agente</span><span class="tag">1.6.0</span></div>
-					<div class="pill"><span>ERP</span><span class="tag">HOTLINE · 9172</span></div>
-					<div class="pill"><span>NFC-e pendente</span><span class="tag alert">4</span></div>
+				<div class="space-y-4">
+					<div class="flex justify-between items-center p-4 border border-zinc-700 rounded-lg bg-dark-800">
+						<span class="font-medium text-white">Certificado Digital</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/30">Válido</span>
+					</div>
+					<div class="flex justify-between items-center p-4 border border-zinc-700 rounded-lg bg-dark-800">
+						<span class="font-medium text-white">Máquinas conectadas</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">CX04
+							· ESTOQUE…</span>
+					</div>
+					<div class="flex justify-between items-center p-4 border border-zinc-700 rounded-lg bg-dark-800">
+						<span class="font-medium text-white">Versão do Agente</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">1.6.0</span>
+					</div>
+					<div class="flex justify-between items-center p-4 border border-zinc-700 rounded-lg bg-dark-800">
+						<span class="font-medium text-white">ERP</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-700/50 text-zinc-300 border border-zinc-700">HOTLINE
+							· 9172</span>
+					</div>
+					<div class="flex justify-between items-center p-4 border border-zinc-700 rounded-lg bg-dark-800">
+						<span class="font-medium text-white">NFC-e pendente</span>
+						<span
+							class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/30">4</span>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- MÓDULOS / SERVIÇOS -->
-	<section id="modulos" class="section">
-		<div class="container">
-			<h2>Serviços integrados que geram valor</h2>
-			<p class="muted">Na área inferior do painel estão os acessos para os módulos da plataforma.</p>
+	<section id="modulos" class="py-20 sm:py-28 border-t border-zinc-800">
+		<div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Serviços integrados que geram valor</h2>
+				<p class="text-lg text-zinc-400 mb-12">Na área inferior do painel estão os acessos para os módulos da
+					plataforma.</p>
+			</div>
 
-			<div class="cards">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-				<article class="card">
-					<h3>Consulta Preço</h3>
-					<p>Consulta rápida de preços em loja, via celular ou totens, com atualização do ERP em tempo real.</p>
-					<div class="shot" style="margin-top:12px">
-						<img src="ConsultaPreco.jpeg" alt="Consulta Preço HubMaster" />
+				<article class="bg-dark-800 border border-zinc-700 p-6 rounded-2xl shadow-lg">
+					<h3 class="text-xl font-semibold text-white mb-3">Consulta Preço</h3>
+					<p class="text-zinc-400 mb-4">Consulta rápida de preços em loja, via celular ou totens, com atualização do ERP
+						em tempo real.</p>
+					<div class="bg-zinc-900/50 border border-zinc-700 rounded-lg overflow-hidden mt-4">
+						<img src="ConsultaPreco.jpeg" alt="Consulta Preço HubMaster" class="block w-full h-auto" />
 					</div>
 				</article>
 
-				<article class="card">
-					<h3>Minha Oferta</h3>
-					<p>Crie ofertas automáticas e padronizadas com imagens, preços e identificação do produto.</p>
-					<div class="shot" style="margin-top:12px">
-						<img src="Minhaoferta.jpeg" alt="Minha Oferta HubMaster" />
+				<article class="bg-dark-800 border border-zinc-700 p-6 rounded-2xl shadow-lg">
+					<h3 class="text-xl font-semibold text-white mb-3">Minha Oferta</h3>
+					<p class="text-zinc-400 mb-4">Crie ofertas automáticas e padronizadas com imagens, preços e identificação do
+						produto.</p>
+					<div class="bg-zinc-900/50 border border-zinc-700 rounded-lg overflow-hidden mt-4">
+						<img src="Minhaoferta.jpeg" alt="Minha Oferta HubMaster" class="block w-full h-auto" />
 					</div>
 				</article>
 
-				<article class="card">
-					<h3>Consulta Preço + Minha Oferta</h3>
-					<p>Integração total: consulte, ative oferta e publique direto para o sistema e tela do cliente.</p>
-					<div class="shot" style="margin-top:12px">
-						<img src="Consultaoferta.jpeg" alt="Consulta Preço e Ofertas HubMaster" />
+				<article class="bg-dark-800 border border-zinc-700 p-6 rounded-2xl shadow-lg">
+					<h3 class="text-xl font-semibold text-white mb-3">Consulta Preço + Minha Oferta</h3>
+					<p class="text-zinc-400 mb-4">Integração total: consulte, ative oferta e publique direto para o sistema e tela
+						do cliente.</p>
+					<div class="bg-zinc-900/50 border border-zinc-700 rounded-lg overflow-hidden mt-4">
+						<img src="Consultaoferta.jpeg" alt="Consulta Preço e Ofertas HubMaster" class="block w-full h-auto" />
 					</div>
 				</article>
 
@@ -463,49 +266,55 @@
 
 
 	<!-- BENEFÍCIOS -->
-	<section class="section">
-		<div class="container">
-			<h2>Por que usar o Painel Negócios</h2>
-			<div class="table" role="region" aria-label="Benefícios">
-				<table>
+	<section class="py-20 sm:py-28 border-t border-zinc-800">
+		<div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center max-w-3xl mx-auto">
+				<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Por que usar o Painel Negócios</h2>
+			</div>
+			<div class="overflow-x-auto rounded-lg border border-zinc-700 bg-dark-800 shadow-lg mt-8 max-w-4xl mx-auto">
+				<table class="w-full min-w-max border-collapse">
 					<thead>
 						<tr>
-							<th>Benefício</th>
-							<th>Resultado</th>
+							<th class="p-4 text-left text-sm font-semibold text-zinc-300 bg-dark-900/50 border-b border-zinc-700">
+								Benefício</th>
+							<th class="p-4 text-left text-sm font-semibold text-zinc-300 bg-dark-900/50 border-b border-zinc-700">
+								Resultado</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td>Centralização dos cadastros</td>
-							<td>Gestão simples e rápida</td>
+					<tbody class="divide-y divide-zinc-800">
+						<tr class="hover:bg-dark-900/30">
+							<td class="p-4 text-sm text-zinc-300">Centralização dos cadastros</td>
+							<td class="p-4 text-sm text-zinc-400">Gestão simples e rápida</td>
 						</tr>
-						<tr>
-							<td>Destaque de NFC-e e alertas</td>
-							<td>Menos riscos fiscais e paradas</td>
+						<tr class="hover:bg-dark-900/30">
+							<td class="p-4 text-sm text-zinc-300">Destaque de NFC-e e alertas</td>
+							<td class="p-4 text-sm text-zinc-400">Menos riscos fiscais e paradas</td>
 						</tr>
-						<tr>
-							<td>Visão de versões e estações</td>
-							<td>Suporte técnico mais eficiente</td>
+						<tr class="hover:bg-dark-900/30">
+							<td class="p-4 text-sm text-zinc-300">Visão de versões e estações</td>
+							<td class="p-4 text-sm text-zinc-400">Suporte técnico mais eficiente</td>
 						</tr>
-						<tr>
-							<td>Ações rápidas no topo</td>
-							<td>Velocidade na resolução de problemas</td>
+						<tr class="hover:bg-dark-900/30">
+							<td class="p-4 text-sm text-zinc-300">Ações rápidas no topo</td>
+							<td class="p-4 text-sm text-zinc-400">Velocidade na resolução de problemas</td>
 						</tr>
-						<tr>
-							<td>Serviços integrados</td>
-							<td>Mais valor e fidelização do cliente</td>
+						<tr class="hover:bg-dark-900/30">
+							<td class="p-4 text-sm text-zinc-300">Serviços integrados</td>
+							<td class="p-4 text-sm text-zinc-400">Mais valor e fidelização do cliente</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="cta-box" style="margin-top:18px">
-				<a class="btn" href="https://hubmaster.com.br" target="_blank" rel="noopener">Quero conhecer a plataforma</a>
-				<a class="btn alt" href="#negocios">Explorar o Painel Negócios</a>
+			<div class="flex gap-4 flex-wrap mt-10 justify-center">
+				<a class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 transition-all transform hover:scale-105"
+					href="/" rel="noopener">Quero conhecer a plataforma</a>
+				<a class="inline-flex items-center justify-center px-6 py-3 border border-zinc-700 text-base font-semibold rounded-lg text-zinc-300 bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
+					href="#negocios">Explorar o Painel Negócios</a>
 			</div>
 		</div>
 	</section>
 
-	<footer class="footer">
+	<footer class="py-12 border-t border-zinc-800 text-center text-zinc-500 text-sm">
 		HubMaster © <span id="yr"></span>. Todos os direitos reservados.
 	</footer>
 

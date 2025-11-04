@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hub Contábil | HubMaster</title>
+	<meta name="description"
+		content="Auditoria fiscal inteligente, downloads de XML e controle total em um único lugar para contadores." />
+	<link rel="icon" href="/logo.png">
+
+	<!-- Tailwind CSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Configuração Personalizada do Tailwind (Padrão) -->
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['Inter', 'sans-serif'],
+					},
+					colors: {
+						// Cor de fundo escura principal
+						dark: {
+							900: '#09090b', // Fundo principal
+							800: '#1a1a1f', // Cards e elementos
+							700: '#2a2a2f', // Bordas
+						},
+						// Cor primária vibrante (inspirada no logo)
+						primary: {
+							500: '#6d28d9', // Roxo principal (botões)
+							600: '#5b21b6', // Hover
+							700: '#4c1d95', // Mais escuro
+						},
+					},
+				},
+			},
+		}
+	</script>
+	<!-- Google Fonts - Inter -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<style>
+		body {
+			font-family: 'Inter', sans-serif;
+		}
+	</style>
+</head>
+
+<body class="antialiased bg-dark-900 text-zinc-100">
+
+	<!-- Cabeçalho Fixo -->
+	<header class="sticky top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
+		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+				<!-- Logo -->
+				<div class="flex-shrink-0">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto" src="/logo-full.png" alt="HubMaster Logo">
+					</a>
+				</div>
+				<!-- Links de Navegação (Desktop) -->
+				<div class="hidden md:flex items-center space-x-6">
+					<a href="/"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
+					<a href="/painel/"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Painel
+						Negócios</a>
+					<a href="" class="text-purple-400 font-semibold px-3 py-2 rounded-md text-sm transition-colors">Hub
+						Contábil</a>
+					<a href="/masterlab/"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">MasterLab</a>
+				</div>
+				<!-- Botão do Menu Móvel (Mobile) -->
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn" type="button"
+						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+						aria-controls="mobile-menu" aria-expanded="false">
+						<span class="sr-only">Abrir menu principal</span>
+						<svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+						</svg>
+						<svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Menu Móvel (Mobile) -->
+		<div class="md:hidden hidden" id="mobile-menu">
+			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+				<a href="/"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Início</a>
+				<a href="/painel/"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Painel
+					Negócios</a>
+				<a href="" class="text-purple-400 font-semibold block px-3 py-2 rounded-md text-base transition-colors">Hub
+					Contábil</a>
+				<a href="/masterlab/"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">MasterLab</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+
+		<!-- Seção Hero -->
+		<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+			<!-- Fundo com brilho -->
+			<div class="absolute inset-0 -z-10 overflow-hidden">
+				<div
+					class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-900/50 rounded-full blur-3xl opacity-30 animate-pulse">
+				</div>
+				<div
+					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-700/50 rounded-full blur-3xl opacity-20 animate-pulse"
+					style="animation-delay: 2s;"></div>
+			</div>
+
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+				<span
+					class="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-zinc-800/50 border border-zinc-700 text-purple-300 mb-4">
+					Portal para Contadores
+				</span>
+				<h1
+					class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400 leading-tight">
+					Hub Contábil
+				</h1>
+				<p class="mt-6 text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto">
+					Auditoria fiscal inteligente, downloads de XML e controle total em um único lugar. Acesso a
+					relatórios avançados, detecção automática de <strong>furo de numeração</strong> e conferência de
+					documentos em
+					contingência <strong>em tempo real</strong>.
+				</p>
+				<div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="#overview"
+						class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-lg shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-purple-500 transition-all transform hover:scale-105">
+						Ver como funciona
+					</a>
+					<a href="/" rel="noopener"
+						class="inline-flex items-center justify-center px-8 py-3 border border-zinc-700 text-lg font-semibold rounded-lg text-zinc-300 bg-zinc-800/50 hover:bg-zinc-800 transition-colors">
+						Conhecer a plataforma
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Seção Overview -->
+		<section id="overview" class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<!-- Coluna de Texto -->
+				<div>
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+						Centralização e eficiência fiscal
+					</h2>
+					<p class="text-lg text-zinc-300 mb-6">
+						O Hub Contábil conecta o escritório de contabilidade diretamente aos clientes da revenda, com
+						acesso rápido a informações, <strong>download de XMLs</strong> (NFe e NFCe) e <strong>auditoria
+							automatizada</strong>, mantendo tudo alinhado ao ERP.
+					</p>
+					<ul class="space-y-3">
+						<li class="flex items-center text-zinc-300 text-base">
+							<svg class="w-5 h-5 text-purple-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+								viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+								</path>
+							</svg>
+							Acesso a todos os clientes da plataforma
+						</li>
+						<li class="flex items-center text-zinc-300 text-base">
+							<svg class="w-5 h-5 text-purple-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+								viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+								</path>
+							</svg>
+							Download automático de XMLs de NFe e NFCe
+						</li>
+						<li class="flex items-center text-zinc-300 text-base">
+							<svg class="w-5 h-5 text-purple-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+								viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+								</path>
+							</svg>
+							Relatórios fiscais completos e intuitivos
+						</li>
+						<li class="flex items-center text-zinc-300 text-base">
+							<svg class="w-5 h-5 text-purple-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+								viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+								</path>
+							</svg>
+							Identificação automática de furos de numeração
+						</li>
+						<li class="flex items-center text-zinc-300 text-base">
+							<svg class="w-5 h-5 text-purple-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
+								viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+								</path>
+							</svg>
+							Verificação de documentos em contingência em tempo real
+						</li>
+					</ul>
+				</div>
+				<!-- Coluna da Imagem -->
+				<div
+					class="relative w-full aspect-video bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 p-2">
+					<img src="hub_contabil_dashboard.png" alt="Dashboard - Hub Contábil"
+						class="rounded-xl w-full h-full object-cover">
+					<div class="absolute inset-0 rounded-2xl border border-white/5"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Seção Furo de Numeração -->
+		<section class="py-20 sm:py-28">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<!-- Coluna da Imagem -->
+				<div
+					class="relative w-full aspect-video bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 p-2 lg:order-last">
+					<!-- Imagem de Furo de Numeração. Usando a contabil.png como placeholder -->
+					<img src="hub_contabil_furo.png" alt="Relatório de Furo de Numeração - HubMaster"
+						class="rounded-xl w-full h-full object-cover">
+					<div class="absolute inset-0 rounded-2xl border border-white/5"></div>
+				</div>
+				<!-- Coluna de Texto -->
+				<div>
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+						🔍 Auditoria inteligente de numeração
+					</h2>
+					<p class="text-lg text-zinc-300">
+						O relatório de <strong>furo de numeração</strong> localiza, em segundos, notas faltantes no
+						período — uma forma
+						prática de garantir conformidade, eliminar falhas e acelerar o fechamento. Integrado ao painel
+						que notifica pendências de NF-e e NFC-e, entrega <strong>controle proativo</strong> para a
+						revenda e para o
+						contador.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Seção Benefícios -->
+		<section class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center max-w-3xl mx-auto">
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+						Benefícios para Revendas & Escritórios
+					</h2>
+				</div>
+				<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Benefício 1 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1">
+						<h3 class="mt-2 text-xl font-semibold text-white">Menos suporte e retrabalho</h3>
+						<p class="mt-2 text-zinc-400">Busca de XMLs e conferências passam a ser automáticas, reduzindo
+							chamados e tempo operacional.</p>
+					</div>
+					<!-- Benefício 2 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1">
+						<h3 class="mt-2 text-xl font-semibold text-white">Confiabilidade fiscal</h3>
+						<p class="mt-2 text-zinc-400">Detecção de furos de numeração e contingências em tempo real,
+							evitando multas e inconsistências.</p>
+					</div>
+					<!-- Benefício 3 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1">
+						<h3 class="mt-2 text-xl font-semibold text-white">Diferencial competitivo</h3>
+						<p class="mt-2 text-zinc-400">Valor agregado para a revenda e relacionamento sólido com
+							contadores parceiros.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- Rodapé -->
+	<footer class="py-12 border-t border-zinc-800">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+				<!-- Logo e Copyright -->
+				<div class="text-center md:text-left">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto mx-auto md:mx-0" src="/logo-full.png" alt="HubMaster Logo">
+					</a>
+					<p class="mt-3 text-sm text-zinc-500">
+						&copy; 2025 HubMaster. Todos os direitos reservados.
+					</p>
+				</div>
+				<p class="text-sm text-zinc-400">Parte da plataforma <strong>HubMaster</strong> - A Central de
+					Comando da sua Revenda.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		// --- Script do Menu Móvel ---
+		document.addEventListener('DOMContentLoaded', () => {
+			const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+			const mobileMenu = document.getElementById('mobile-menu');
+			const iconOpen = document.getElementById('icon-open');
+			const iconClose = document.getElementById('icon-close');
+
+			if (mobileMenuBtn) {
+				mobileMenuBtn.addEventListener('click', () => {
+					const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+					mobileMenuBtn.setAttribute('aria-expanded', String(!isExpanded));
+					mobileMenu.classList.toggle('hidden');
+					iconOpen.classList.toggle('hidden');
+					iconClose.classList.toggle('hidden');
+				});
+			}
+
+			// Fechar menu móvel ao clicar em um link
+			if (mobileMenu) {
+				mobileMenu.querySelectorAll('a').forEach(link => {
+					link.addEventListener('click', () => {
+						mobileMenuBtn.setAttribute('aria-expanded', 'false');
+						mobileMenu.classList.add('hidden');
+						iconOpen.classList.remove('hidden');
+						iconClose.classList.add('hidden');
+					});
+				});
+			}
+		});
+	</script>
+
+</body>
+
+</html>
