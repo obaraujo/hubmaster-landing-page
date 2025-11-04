@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>HubMaster — Painel Negócios</title>
+	<meta name="description"
+		content="Conheça o HubMaster e o Painel Negócios: centralize cadastros, monitore NFC-e, automatize alertas e ofereça serviços como Consulta Preço e Minha Oferta." />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #0f1115;
+			--panel: #151821;
+			--muted: #97a0b3;
+			--text: #e6e8f0;
+			--brand: #8e7df0;
+			/* roxo suave */
+			--brand-2: #22c55e;
+			/* verde status */
+			--alert: #ef4444;
+			/* vermelho alerta */
+			--card: #0d0f14;
+			--line: #202534;
+			--shadow: 0 10px 30px rgba(0, 0, 0, .35);
+			--radius: 16px;
+			--radius-sm: 12px;
+			--pad: clamp(16px, 3vw, 28px);
+			--max: 1180px;
+		}
+
+		* {
+			box-sizing: border-box
+		}
+
+		html,
+		body {
+			background: var(--bg);
+			color: var(--text);
+			font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+			line-height: 1.6
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none
+		}
+
+		.container {
+			max-width: var(--max);
+			margin: 0 auto;
+			padding: 0 var(--pad)
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: .6rem;
+			padding: .9rem 1.2rem;
+			border-radius: 12px;
+			font-weight: 600;
+			background: var(--brand);
+			color: #0c0c10;
+			box-shadow: var(--shadow);
+			border: 1px solid #a79bf6
+		}
+
+		.btn.alt {
+			background: #1d2230;
+			color: var(--text);
+			border-color: #2a3145
+		}
+
+		.muted {
+			color: var(--muted)
+		}
+
+		.tag {
+			display: inline-flex;
+			align-items: center;
+			gap: .45rem;
+			padding: .3rem .6rem;
+			border-radius: 999px;
+			font-size: .85rem;
+			background: #1d2230;
+			border: 1px solid #2a3145
+		}
+
+		.tag.ok {
+			background: rgba(34, 197, 94, .12);
+			border-color: rgba(34, 197, 94, .45);
+			color: #86efac
+		}
+
+		.tag.alert {
+			background: rgba(239, 68, 68, .12);
+			border-color: rgba(239, 68, 68, .45);
+			color: #fca5a5
+		}
+
+		.grid {
+			display: grid;
+			gap: 18px
+		}
+
+		.hero {
+			padding: clamp(42px, 6vw, 80px) 0
+		}
+
+		.hero .wrap {
+			display: grid;
+			gap: 24px
+		}
+
+		.headline {
+			font-size: clamp(28px, 3.2vw, 44px);
+			line-height: 1.15;
+			font-weight: 800;
+			letter-spacing: -.01em
+		}
+
+		.sub {
+			font-size: clamp(15px, 1.6vw, 18px);
+			color: var(--muted)
+		}
+
+		.hero-cta {
+			display: flex;
+			gap: 12px;
+			flex-wrap: wrap;
+			margin-top: 8px
+		}
+
+		.shot {
+			background: linear-gradient(180deg, #1a1f2d, #0f1115);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			padding: 0;
+			overflow: hidden;
+			box-shadow: var(--shadow)
+		}
+
+		.shot img {
+			display: block;
+			width: 100%;
+			height: auto
+		}
+
+		.section {
+			padding: clamp(40px, 6vw, 72px) 0;
+			border-top: 1px solid var(--line)
+		}
+
+		h2 {
+			font-size: clamp(22px, 2.6vw, 32px);
+			letter-spacing: -.01em;
+			margin: 0 0 14px
+		}
+
+		.cards {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			gap: 18px;
+			margin-top: 18px
+		}
+
+		.card {
+			grid-column: span 12;
+			background: var(--panel);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			padding: 18px 18px;
+			box-shadow: var(--shadow)
+		}
+
+		@media (min-width:720px) {
+			.cards .card {
+				grid-column: span 6
+			}
+		}
+
+		@media (min-width:1024px) {
+			.cards .card {
+				grid-column: span 4
+			}
+		}
+
+		.card h3 {
+			margin: 0 0 8px;
+			font-size: 1.05rem
+		}
+
+		.card p {
+			margin: 0;
+			color: var(--muted)
+		}
+
+		.stack {
+			display: grid;
+			gap: 14px
+		}
+
+		.pill {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 12px 14px;
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			background: var(--card)
+		}
+
+		.kpi {
+			display: flex;
+			align-items: center;
+			gap: 10px
+		}
+
+		.kpi .dot {
+			width: 9px;
+			height: 9px;
+			border-radius: 999px;
+			background: var(--brand)
+		}
+
+		.kpi .dot.ok {
+			background: var(--brand-2)
+		}
+
+		.kpi .dot.alert {
+			background: var(--alert)
+		}
+
+		.list {
+			margin: 8px 0 0;
+			padding-left: 18px;
+			color: var(--muted)
+		}
+
+		.list li {
+			margin: .3rem 0
+		}
+
+		.cta-box {
+			display: flex;
+			gap: 12px;
+			flex-wrap: wrap;
+			margin-top: 16px
+		}
+
+		.footer {
+			padding: 36px 0;
+			color: #9aa3b7;
+			text-align: center;
+			border-top: 1px solid var(--line);
+			font-size: .95rem
+		}
+
+		/* sticky header */
+		.topbar {
+			position: sticky;
+			top: 0;
+			z-index: 20;
+			background: rgba(15, 17, 21, .8);
+			backdrop-filter: saturate(140%) blur(10px);
+			border-bottom: 1px solid var(--line)
+		}
+
+		.topbar .inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 60px
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: .6rem;
+			font-weight: 800
+		}
+
+		.logo .mark {
+			width: 28px;
+			height: 28px;
+			border-radius: 8px;
+			background: linear-gradient(135deg, var(--brand), #b9b0ff)
+		}
+
+		.table {
+			overflow: auto;
+			border: 1px solid var(--line);
+			border-radius: 12px
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			font-size: .95rem
+		}
+
+		th,
+		td {
+			padding: 12px 14px;
+			border-bottom: 1px solid #1e2230;
+			white-space: nowrap
+		}
+
+		th {
+			color: #a7b0c7;
+			text-align: left;
+			font-weight: 600;
+			background: #121520;
+			position: sticky;
+			top: 0
+		}
+
+		tr:hover td {
+			background: #10131b
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- TOPO -->
+	<header class="topbar">
+		<div class="container inner">
+			<div class="logo"><span class="mark"></span> HubMaster</div>
+			<nav class="muted"><a href="#negocios">Painel Negócios</a> · <a href="#modulos">Serviços</a> · <a
+					href="https://hubmaster.com.br" target="_blank" rel="noopener">Site</a></nav>
+		</div>
+	</header>
+
+	<!-- HERO -->
+	<section class="hero">
+		<div class="container wrap">
+			<div>
+				<div class="tag">Plataforma para Revendas</div>
+				<h1 class="headline">Centralize sua base, monitore a operação e gere valor com o <span
+						style="color:#c5bcff">Painel Negócios</span>.</h1>
+				<p class="sub">O HubMaster conecta o <strong>Agente Hub</strong> aos servidores dos clientes, traz dados
+					críticos em tempo real (como <strong>NFC-e</strong>, estações ativas e versão do ERP) e habilita ações rápidas
+					de suporte e serviços.</p>
+				<div class="hero-cta">
+					<a class="btn" href="#negocios">Ver como funciona</a>
+					<a class="btn alt" href="https://hubmaster.com.br" target="_blank" rel="noopener">Ir para hubmaster.com.br</a>
+				</div>
+			</div>
+			<div class="shot">
+				<!-- Substitua pelo seu print do dashboard -->
+				<img src="Dashboard.png" alt="HubMaster - Dashboard" />
+			</div>
+		</div>
+	</section>
+
+	<!-- PAINEL NEGÓCIOS -->
+	<section id="negocios" class="section">
+		<div class="container">
+			<h2>Painel Negócios — visão unificada dos clientes</h2>
+			<p class="muted">Cadastros centralizados, status do agente, NFC-e em evidência, estações ativas e acesso completo
+				ao perfil do cliente.</p>
+
+			<div class="cards">
+				<article class="card">
+					<h3>Informações-chave por empresa</h3>
+					<p>CNPJ, Razão Social, Fantasia, Revenda, Contabilidade, ERP e versões. Tudo em um só lugar.</p>
+					<ul class="list">
+						<li>Status do Agente (online/offline)</li>
+						<li>Estações ativas</li>
+						<li>NFC-e em contingência (destaque visual)</li>
+					</ul>
+				</article>
+				<article class="card">
+					<h3>Alertas inteligentes</h3>
+					<p>Se houver pendências de NFC-e, a plataforma dispara <strong>alerta automático via WhatsApp</strong> para o
+						cliente.</p>
+					<div class="stack" style="margin-top:10px">
+						<div class="pill"><span class="kpi"><span class="dot alert"></span>Pendências NFC-e</span><span
+								class="tag alert">Ação imediata</span></div>
+						<div class="pill"><span class="kpi"><span class="dot ok"></span>Cliente notificado</span><span
+								class="tag ok">WhatsApp enviado</span></div>
+					</div>
+				</article>
+				<article class="card">
+					<h3>Ações rápidas</h3>
+					<p>Direto do topo do cadastro: <strong>Bloquear/Liberar</strong> sistema, <strong>Consultar
+							Pendências</strong>, <strong>Contrato</strong> e <strong>Contábil</strong>.</p>
+					<div class="cta-box">
+						<span class="tag">Bloquear / Liberar</span>
+						<span class="tag">Contrato</span>
+						<span class="tag">Pendências NFC-e</span>
+						<span class="tag">Contábil</span>
+					</div>
+				</article>
+			</div>
+
+			<div class="shot" style="margin-top:18px">
+				<!-- Substitua pelo seu print da tabela de negócios -->
+				<img src="painel_negocios.png" alt="Tabela de Negócios HubMaster" />
+			</div>
+		</div>
+	</section>
+
+	<!-- PERFIL DA EMPRESA -->
+	<section class="section">
+		<div class="container">
+			<h2>Visualização detalhada do cliente</h2>
+			<p class="muted">Ao clicar em <strong>Visualizar</strong>, você acessa dados completos: validade do certificado,
+				nomes das máquinas conectadas, log de conexão, e a lista de pendências NFC-e com a numeração exata.</p>
+			<div class="grid" style="grid-template-columns:1.15fr .85fr; gap:20px">
+				<div class="shot">
+					<!-- Substitua pelo print do detalhe do cliente -->
+					<img src="empresa.png" alt="Detalhe do Cliente - HubMaster" />
+				</div>
+				<div class="stack">
+					<div class="pill"><span>Certificado Digital</span><span class="tag ok">Válido</span></div>
+					<div class="pill"><span>Máquinas conectadas</span><span class="tag">CX04 · ESTOQUE · SERVIDOR…</span></div>
+					<div class="pill"><span>Versão do Agente</span><span class="tag">1.6.0</span></div>
+					<div class="pill"><span>ERP</span><span class="tag">HOTLINE · 9172</span></div>
+					<div class="pill"><span>NFC-e pendente</span><span class="tag alert">4</span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- MÓDULOS / SERVIÇOS -->
+	<section id="modulos" class="section">
+		<div class="container">
+			<h2>Serviços integrados que geram valor</h2>
+			<p class="muted">Na área inferior do painel estão os acessos para os módulos da plataforma.</p>
+
+			<div class="cards">
+
+				<article class="card">
+					<h3>Consulta Preço</h3>
+					<p>Consulta rápida de preços em loja, via celular ou totens, com atualização do ERP em tempo real.</p>
+					<div class="shot" style="margin-top:12px">
+						<img src="ConsultaPreco.jpeg" alt="Consulta Preço HubMaster" />
+					</div>
+				</article>
+
+				<article class="card">
+					<h3>Minha Oferta</h3>
+					<p>Crie ofertas automáticas e padronizadas com imagens, preços e identificação do produto.</p>
+					<div class="shot" style="margin-top:12px">
+						<img src="Minhaoferta.jpeg" alt="Minha Oferta HubMaster" />
+					</div>
+				</article>
+
+				<article class="card">
+					<h3>Consulta Preço + Minha Oferta</h3>
+					<p>Integração total: consulte, ative oferta e publique direto para o sistema e tela do cliente.</p>
+					<div class="shot" style="margin-top:12px">
+						<img src="Consultaoferta.jpeg" alt="Consulta Preço e Ofertas HubMaster" />
+					</div>
+				</article>
+
+			</div>
+		</div>
+	</section>
+
+
+	<!-- BENEFÍCIOS -->
+	<section class="section">
+		<div class="container">
+			<h2>Por que usar o Painel Negócios</h2>
+			<div class="table" role="region" aria-label="Benefícios">
+				<table>
+					<thead>
+						<tr>
+							<th>Benefício</th>
+							<th>Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Centralização dos cadastros</td>
+							<td>Gestão simples e rápida</td>
+						</tr>
+						<tr>
+							<td>Destaque de NFC-e e alertas</td>
+							<td>Menos riscos fiscais e paradas</td>
+						</tr>
+						<tr>
+							<td>Visão de versões e estações</td>
+							<td>Suporte técnico mais eficiente</td>
+						</tr>
+						<tr>
+							<td>Ações rápidas no topo</td>
+							<td>Velocidade na resolução de problemas</td>
+						</tr>
+						<tr>
+							<td>Serviços integrados</td>
+							<td>Mais valor e fidelização do cliente</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="cta-box" style="margin-top:18px">
+				<a class="btn" href="https://hubmaster.com.br" target="_blank" rel="noopener">Quero conhecer a plataforma</a>
+				<a class="btn alt" href="#negocios">Explorar o Painel Negócios</a>
+			</div>
+		</div>
+	</section>
+
+	<footer class="footer">
+		HubMaster © <span id="yr"></span>. Todos os direitos reservados.
+	</footer>
+
+	<script>document.getElementById('yr').textContent = new Date().getFullYear()</script>
+</body>
+
+</html>

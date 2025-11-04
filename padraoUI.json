@@ -1,0 +1,95 @@
+{
+	"designSystem": {
+		"nome": "HubMaster Visual Standard",
+		"descricao": "Padrões de design para manter a consistência visual nas páginas web do HubMaster.",
+		"palette": {
+			"background": {
+				"primary": "#121212",
+				"secondary": "#1E1E1E",
+				"surface": "#242424"
+			},
+			"primary": {
+				"main": "#9D4BFF",
+				"light": "#B880FF"
+			},
+			"text": {
+				"primary": "#FFFFFF",
+				"secondary": "#B3B3B3",
+				"disabled": "#5E5E5E"
+			},
+			"common": {
+				"white": "#FFFFFF",
+				"black": "#000000"
+			},
+			"feedback": {
+				"success": "#3ED17C",
+				"warning": "#FFB800",
+				"error": "#FF4D4D"
+			}
+		},
+		"typography": {
+			"fontFamily": "'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif",
+			"headings": {
+				"fontFamily": "'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif",
+				"fontWeight": 700,
+				"color": "#FFFFFF"
+			},
+			"body": {
+				"fontFamily": "'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif",
+				"fontWeight": 400,
+				"color": "#B3B3B3",
+				"lineHeight": "1.6"
+			},
+			"fontSizes": {
+				"h1": "3.5rem",
+				"h2": "2.5rem",
+				"h3": "1.75rem",
+				"h4": "1.25rem",
+				"body1": "1rem",
+				"body2": "0.875rem",
+				"caption": "0.75rem"
+			}
+		},
+		"components": {
+			"button": {
+				"primary": {
+					"backgroundColor": "#9D4BFF",
+					"color": "#FFFFFF",
+					"fontWeight": 600,
+					"borderRadius": "8px",
+					"padding": "12px 24px",
+					"border": "none",
+					"hover": {
+						"backgroundColor": "#B880FF"
+					}
+				},
+				"secondary": {
+					"backgroundColor": "#1E1E1E",
+					"color": "#FFFFFF",
+					"fontWeight": 500,
+					"borderRadius": "8px",
+					"padding": "12px 24px",
+					"border": "1px solid #242424",
+					"hover": {
+						"backgroundColor": "#242424"
+					}
+				}
+			},
+			"card": {
+				"backgroundColor": "#1E1E1E",
+				"borderRadius": "12px",
+				"padding": "24px",
+				"boxShadow": "none"
+			},
+			"navBar": {
+				"backgroundColor": "#121212",
+				"padding": "16px 32px",
+				"linkColor": "#B3B3B3",
+				"linkHoverColor": "#FFFFFF"
+			},
+			"icon": {
+				"color": "#9D4BFF"
+			}
+		}
+	}
+}

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MasterLab - Academy para Revendas de Software | HubMaster</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700?display=swap&display=swap"
+		rel="stylesheet">
+	<style>
+		/* === Sobre o Autor Premium === */
+		.author-gradient {
+			background: radial-gradient(1200px 600px at 10% 0%, rgba(99, 102, 241, .18), transparent 60%),
+				radial-gradient(900px 500px at 90% 20%, rgba(147, 51, 234, .18), transparent 60%);
+			border-top: 1px solid rgba(99, 102, 241, .15);
+			border-bottom: 1px solid rgba(99, 102, 241, .15);
+		}
+
+		.author-wrap {
+			max-width: 980px;
+			margin: 0 auto;
+			padding: 56px 20px;
+			text-align: center
+		}
+
+		.author-photo {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 3px solid #6366f1;
+			box-shadow: 0 0 18px rgba(99, 102, 241, .35);
+			margin: 0 auto 16px;
+			display: block
+		}
+
+		.author-name {
+			font-size: 1.8em;
+			font-weight: 800;
+			color: #a78bfa;
+			margin: 6px 0 4px
+		}
+
+		.author-sub {
+			color: #d1d5db;
+			font-size: 1.06em;
+			line-height: 1.8;
+			margin: 0 auto 12px;
+			max-width: 820px
+		}
+
+		.author-text {
+			color: #94a3b8;
+			font-size: 1.04em;
+			line-height: 1.85;
+			margin: 0 auto 28px;
+			max-width: 820px
+		}
+
+		.author-logos {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 44px;
+			flex-wrap: wrap;
+			margin: 10px 0 14px
+		}
+
+		.author-logos img {
+			height: 56px
+		}
+
+		.author-social {
+			display: flex;
+			justify-content: center;
+			gap: 14px;
+			margin: 16px 0 8px;
+			flex-wrap: wrap
+		}
+
+		.btn-pill {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 12px 18px;
+			border-radius: 999px;
+			border: 2px solid #6366f1;
+			color: #fff;
+			text-decoration: none;
+			background: transparent;
+			transition: .2s;
+			font-weight: 700
+		}
+
+		.btn-pill:hover {
+			background: #6366f1
+		}
+
+		@media (max-width:480px) {
+			.author-photo {
+				width: 130px;
+				height: 130px
+			}
+
+			.author-name {
+				font-size: 1.5em
+			}
+
+			.author-logos img {
+				height: 48px
+			}
+
+			.btn-pill {
+				width: 100%;
+				justify-content: center
+			}
+		}
+
+		@media print {
+			.author-gradient {
+				background: #fff !important;
+				border: 0
+			}
+
+			.btn-pill {
+				display: none
+			}
+		}
+
+
+
+		/* === Calculator Promo (responsive) === */
+		.calc-wrapper {
+			margin: 60px 0
+		}
+
+		.calc-title {
+			font-size: 2.4em;
+			font-weight: 800;
+			text-align: center;
+			margin-bottom: 10px;
+			color: var(--color-text-light, #111)
+		}
+
+		.calc-sub {
+			color: var(--color-text-muted, #6b7280);
+			text-align: center;
+			margin-bottom: 30px;
+			font-size: 1.1em
+		}
+
+		.calc-card {
+			display: grid;
+			grid-template-columns: 1.1fr 1fr;
+			gap: 40px;
+			align-items: center;
+			background: #f5f7ff;
+			border-radius: 16px;
+			padding: 28px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+			border: 1px solid rgba(99, 102, 241, .15)
+		}
+
+		.calc-img {
+			width: 100%;
+			border-radius: 12px;
+			box-shadow: 0 12px 24px rgba(31, 41, 55, .18)
+		}
+
+		.calc-h {
+			font-size: 2em;
+			font-weight: 800;
+			color: #6366f1;
+			margin-bottom: 6px
+		}
+
+		.calc-kicker {
+			font-weight: 700;
+			color: #334155;
+			margin-bottom: 12px
+		}
+
+		.calc-text {
+			color: #475569;
+			line-height: 1.8;
+			margin-bottom: 18px
+		}
+
+		.calc-cta {
+			display: inline-block;
+			padding: 14px 28px;
+			border-radius: 999px;
+			background: #6366f1;
+			color: #fff;
+			text-decoration: none;
+			font-weight: 700;
+			border: 2px solid #6366f1;
+			transition: .2s
+		}
+
+		.calc-cta:hover {
+			transform: translateY(-1px);
+			background: #4f46e5;
+			border-color: #4f46e5
+		}
+
+		@media (max-width: 980px) {
+			.calc-card {
+				grid-template-columns: 1fr;
+				gap: 20px;
+				padding: 22px
+			}
+
+			.calc-title {
+				font-size: 2em
+			}
+
+			.calc-h {
+				font-size: 1.6em
+			}
+		}
+
+		@media (max-width: 420px) {
+			.calc-card {
+				padding: 18px
+			}
+
+			.calc-cta {
+				width: 100%;
+				text-align: center
+			}
+		}
+
+
+
+		@media (max-width: 768px) {
+			.menu-toggle {
+				background: #2e2e2e;
+				border: 1px solid #444;
+				padding: 8px 12px;
+				border-radius: 8px;
+				color: #fff;
+				cursor: pointer;
+				margin-right: 8px
+			}
+
+			nav ul[hidden] {
+				display: none !important
+			}
+		}
+
+
+		.sr-only-focusable {
+			position: absolute;
+			left: -9999px;
+			top: auto;
+			width: 1px;
+			height: 1px;
+			overflow: hidden
+		}
+
+		.sr-only-focusable:focus {
+			position: static;
+			width: auto;
+			height: auto;
+			padding: 8px;
+			background: #000;
+			color: #fff;
+			z-index: 9999
+		}
+
+		section {
+			scroll-margin-top: 90px
+		}
+
+		a,
+		.cta-button {
+			touch-action: manipulation
+		}
+
+		@media (max-width: 420px) {
+			.calculator-iframe {
+				height: 420px
+			}
+		}
+
+		:root {
+			--color-primary: #8a2be2;
+			--color-secondary: #4b0082;
+			--color-background: #121212;
+			--color-surface: #1e1e1e;
+			--color-text-light: #ffffff;
+			--color-text-muted: #b0b0b0;
+			--color-accent: #ffc107;
+			--border-radius: 8px;
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Inter', sans-serif;
+			background-color: var(--color-background);
+			color: var(--color-text-light);
+			line-height: 1.6;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* --- Navigation --- */
+		nav {
+			background-color: rgba(30, 30, 30, 0.95);
+			padding: 15px 0;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		nav .container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		nav .logo {
+			font-size: 1.5em;
+			font-weight: 700;
+			color: var(--color-primary);
+		}
+
+		nav ul {
+			list-style: none;
+			display: flex;
+			gap: 30px;
+		}
+
+		nav a {
+			color: var(--color-text-light);
+			text-decoration: none;
+			transition: color 0.3s ease;
+			font-size: 0.95em;
+		}
+
+		nav a:hover {
+			color: var(--color-accent);
+		}
+
+		@media (max-width: 768px) {
+			nav ul {
+				gap: 15px;
+				font-size: 0.9em;
+			}
+		}
+
+		/* --- Hero Section --- */
+		.hero {
+			text-align: center;
+			padding: 80px 0;
+			background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
+			margin-bottom: 60px;
+			border-radius: var(--border-radius);
+		}
+
+		.hero h1 {
+			font-size: 3.5em;
+			font-weight: 700;
+			color: var(--color-primary);
+			margin-bottom: 15px;
+		}
+
+		.hero .subtitle {
+			font-size: 1.3em;
+			color: var(--color-text-muted);
+			max-width: 800px;
+			margin: 0 auto 30px;
+		}
+
+		.cta-button {
+			display: inline-block;
+			padding: 14px 35px;
+			background-color: var(--color-primary);
+			color: var(--color-text-light);
+			text-decoration: none;
+			border-radius: 50px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			border: 2px solid var(--color-primary);
+		}
+
+		.cta-button:hover {
+			background-color: var(--color-secondary);
+			border-color: var(--color-secondary);
+			transform: translateY(-2px);
+		}
+
+		.cta-button.secondary {
+			background-color: transparent;
+			border-color: var(--color-accent);
+			color: var(--color-accent);
+		}
+
+		.cta-button.secondary:hover {
+			background-color: var(--color-accent);
+			color: var(--color-background);
+		}
+
+		/* --- Section Styling --- */
+		.section {
+			margin-bottom: 80px;
+		}
+
+		.section-title {
+			font-size: 2.5em;
+			font-weight: 700;
+			text-align: center;
+			margin-bottom: 50px;
+			color: var(--color-text-light);
+		}
+
+		.section-title .highlight {
+			color: var(--color-primary);
+		}
+
+		/* --- Content Grid --- */
+		.content-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 30px;
+			margin-bottom: 40px;
+		}
+
+		.content-card {
+			background-color: var(--color-surface);
+			padding: 30px;
+			border-radius: var(--border-radius);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+			transition: all 0.3s ease;
+			border: 2px solid rgba(138, 43, 226, 0.3);
+		}
+
+		.content-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 12px 30px rgba(138, 43, 226, 0.3);
+			border-color: var(--color-primary);
+		}
+
+		.content-card h3 {
+			font-size: 1.5em;
+			color: var(--color-accent);
+			margin-bottom: 15px;
+			border-bottom: 2px solid var(--color-primary);
+			padding-bottom: 10px;
+		}
+
+		.content-card p {
+			color: var(--color-text-muted);
+			margin-bottom: 15px;
+			font-size: 0.95em;
+		}
+
+		.content-card ul {
+			list-style: none;
+		}
+
+		.content-card li {
+			margin-bottom: 12px;
+			color: var(--color-text-muted);
+			display: flex;
+			align-items: flex-start;
+			font-size: 0.95em;
+		}
+
+		.content-card li::before {
+			content: '✓';
+			color: var(--color-accent);
+			font-weight: 700;
+			margin-right: 12px;
+			flex-shrink: 0;
+		}
+
+		/* --- Article Content --- */
+		.article-content {
+			background-color: var(--color-surface);
+			padding: 40px;
+			border-radius: var(--border-radius);
+			margin-bottom: 40px;
+			line-height: 1.8;
+			border: 1px solid rgba(138, 43, 226, 0.2);
+		}
+
+		.article-content h2 {
+			font-size: 1.8em;
+			color: var(--color-primary);
+			margin-top: 30px;
+			margin-bottom: 20px;
+			border-left: 4px solid var(--color-accent);
+			padding-left: 15px;
+		}
+
+		.article-content h3 {
+			font-size: 1.3em;
+			color: var(--color-accent);
+			margin-top: 25px;
+			margin-bottom: 15px;
+		}
+
+		.article-content p {
+			margin-bottom: 15px;
+			color: var(--color-text-muted);
+		}
+
+		.article-content ul,
+		.article-content ol {
+			margin-left: 25px;
+			margin-bottom: 15px;
+		}
+
+		.article-content li {
+			margin-bottom: 10px;
+			color: var(--color-text-muted);
+		}
+
+		.article-content table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+			background-color: rgba(138, 43, 226, 0.05);
+			border-radius: var(--border-radius);
+			overflow: hidden;
+		}
+
+		.article-content th {
+			background-color: var(--color-primary);
+			color: var(--color-text-light);
+			padding: 12px;
+			text-align: left;
+			font-weight: 600;
+		}
+
+		.article-content td {
+			padding: 12px;
+			border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+			color: var(--color-text-muted);
+		}
+
+		.article-content tr:hover {
+			background-color: rgba(138, 43, 226, 0.1);
+		}
+
+		.article-content blockquote {
+			border-left: 4px solid var(--color-accent);
+			padding-left: 20px;
+			margin: 20px 0;
+			font-style: italic;
+			color: var(--color-text-muted);
+		}
+
+		.formula {
+			background-color: rgba(138, 43, 226, 0.1);
+			padding: 20px;
+			border-radius: var(--border-radius);
+			margin: 20px 0;
+			border-left: 4px solid var(--color-accent);
+			font-family: 'Courier New', monospace;
+			color: var(--color-accent);
+			overflow-x: auto;
+		}
+
+		/* --- Calculator Section --- */
+		.calculator-section {
+			background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
+			padding: 50px 40px;
+			border-radius: var(--border-radius);
+			margin-bottom: 60px;
+			text-align: center;
+			border: 2px solid var(--color-primary);
+		}
+
+		.calculator-section h2 {
+			font-size: 2em;
+			color: var(--color-accent);
+			margin-bottom: 15px;
+		}
+
+		.calculator-section p {
+			color: var(--color-text-muted);
+			margin-bottom: 30px;
+			font-size: 1.05em;
+		}
+
+		.calculator-iframe {
+			width: 100%;
+			height: 700px;
+			border: none;
+			border-radius: var(--border-radius);
+			box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+			background-color: var(--color-surface);
+		}
+
+		/* --- Back to Top Button --- */
+		.back-to-top {
+			display: inline-block;
+			margin-top: 30px;
+			padding: 10px 25px;
+			background-color: var(--color-surface);
+			color: var(--color-primary);
+			text-decoration: none;
+			border-radius: 50px;
+			transition: all 0.3s ease;
+			border: 1px solid var(--color-primary);
+			font-weight: 600;
+		}
+
+		.back-to-top:hover {
+			background-color: var(--color-primary);
+			color: var(--color-text-light);
+		}
+
+		/* --- Footer --- */
+		.footer {
+			text-align: center;
+			padding: 40px 0 20px;
+			border-top: 1px solid var(--color-surface);
+			color: var(--color-text-muted);
+			font-size: 0.9em;
+		}
+
+		/* --- Responsive Adjustments --- */
+		@media (max-width: 768px) {
+			.hero h1 {
+				font-size: 2.5em;
+			}
+
+			.hero .subtitle {
+				font-size: 1.1em;
+			}
+
+			.section-title {
+				font-size: 2em;
+			}
+
+			.article-content {
+				padding: 20px;
+			}
+
+			.calculator-iframe {
+				height: 500px;
+			}
+
+			nav ul {
+				flex-direction: column;
+				gap: 10px;
+			}
+		}
+	</style>
+	<meta name="description"
+		content="MasterLab: conteúdos e ferramentas de precificação para revendas de automação comercial. Aprenda despesas, impostos, custo, lucro e valor percebido.">
+	<link rel="canonical" href="https://sua-url.com/masterlab">
+	<link rel="icon" href="/favicon.ico">
+	<meta property="og:title" content="MasterLab - Academy para Revendas de Software | HubMaster">
+	<meta property="og:description" content="Conhecimento aplicado + calculadora de precificação Preço Certo.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://sua-url.com/masterlab">
+	<meta property="og:image" content="https://sua-url.com/og-masterlab.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+	<a href="#inicio" class="sr-only-focusable">Pular para o conteúdo</a>
+	<!-- Navigation -->
+	<nav>
+		<button id="menuBtn" aria-expanded="false" aria-controls="menuList" class="menu-toggle">Menu</button>
+		<div class="container">
+			<a href="/">
+				<img style="height: 2rem;" src="/logo-full.png" alt="HubMaster Logo">
+			</a>
+			<ul id="menuList" hidden>
+				<li><a href="#inicio">Início</a></li>
+				<li><a href="#pilares">Os 5 Pilares</a></li>
+				<li><a href="#calculadora">Calculadora</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="">
+		<!-- Hero Section -->
+		<section class="hero" id="inicio">
+			<h1>MasterLab</h1>
+			<p class="subtitle">O ambiente de estudo e desenvolvimento contínuo, com conteúdos estratégicos para empresários,
+				equipes técnicas e vendedores que atuam com automação comercial.</p>
+			<a href="#pilares" class="cta-button">Explorar os 5 Pilares</a>
+		</section>
+
+		<!-- Mission Section -->
+		<section class="section">
+			<h2 class="section-title">Nossa <span class="highlight">Missão</span></h2>
+			<div style="text-align: center; max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 1.1em; color: var(--color-text-muted); line-height: 1.8;">
+					Gerar valor através do conhecimento. O MasterLab é a sua área educacional, onde disponibilizamos conteúdos e
+					ferramentas para fortalecer o conhecimento das revendas e acelerar sua evolução no mercado de automação
+					comercial.
+				</p>
+			</div>
+		</section>
+
+		<!-- The 5 Pillars Overview -->
+		<section class="section container" id="pilares">
+			<h2 class="section-title">Os 5 <span class="highlight">Pilares</span> da Precificação</h2>
+			<div class="content-grid">
+				<div class="content-card">
+					<h3>0. Precificação Simplificada</h3>
+					<p>Domine a fórmula do Markup Divisor e calcule o preço de venda ideal em segundos.</p>
+					<ul>
+						<li>Fórmula prática e eficiente</li>
+						<li>Cálculo do Preço de Venda</li>
+						<li>Exemplos reais</li>
+					</ul>
+					<div style="margin-top: 20px;">
+						<a href="pilar-0.html" class="cta-button"
+							style="display: inline-block; padding: 10px 25px; font-size: 0.9em;">Saiba Mais</a>
+					</div>
+				</div>
+
+				<div class="content-card">
+					<h3>1. Despesas</h3>
+					<p>O 1º Pilar: Identifique e controle todas as despesas que impactam sua margem.</p>
+					<ul>
+						<li>Despesas Fixas vs. Variáveis</li>
+						<li>Cálculo do percentual</li>
+						<li>Impacto no Markup</li>
+					</ul>
+					<div style="margin-top: 20px;">
+						<a href="pilar-1.html" class="cta-button"
+							style="display: inline-block; padding: 10px 25px; font-size: 0.9em;">Saiba Mais</a>
+					</div>
+				</div>
+
+				<div class="content-card">
+					<h3>2. Impostos</h3>
+					<p>O 2º Pilar: Navegue a complexa carga tributária brasileira com segurança.</p>
+					<ul>
+						<li>Regimes tributários</li>
+						<li>Impostos principais</li>
+						<li>Substituição Tributária</li>
+					</ul>
+					<div style="margin-top: 20px;">
+						<a href="pilar-2.html" class="cta-button"
+							style="display: inline-block; padding: 10px 25px; font-size: 0.9em;">Saiba Mais</a>
+					</div>
+				</div>
+
+				<div class="content-card">
+					<h3>3. CSV (Custo Serviços Vendidos)</h3>
+					<p>O 3º Pilar: Calcule o custo direto de cada serviço ou produto vendido.</p>
+					<ul>
+						<li>Componentes do custo direto</li>
+						<li>Custo da hora técnica</li>
+						<li>Exemplos práticos</li>
+					</ul>
+					<div style="margin-top: 20px;">
+						<a href="pilar-3.html" class="cta-button"
+							style="display: inline-block; padding: 10px 25px; font-size: 0.9em;">Saiba Mais</a>
+					</div>
+				</div>
+
+				<div class="content-card">
+					<h3>4. Lucro e Valor Percebido</h3>
+					<p>O 4º Pilar: Defina margens lucrativas e comunique o valor ao cliente.</p>
+					<ul>
+						<li>Lucro desejado</li>
+						<li>Percepção de valor</li>
+						<li>Diferenciação estratégica</li>
+					</ul>
+					<div style="margin-top: 20px;">
+						<a href="pilar-4.html" class="cta-button"
+							style="display: inline-block; padding: 10px 25px; font-size: 0.9em;">Saiba Mais</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Calculator Section (immediately after cards) -->
+
+		<section class="section container" id="calculadora">
+			<div class="calc-wrapper">
+				<h2 class="calc-title">Ferramenta Essencial</h2>
+				<p class="calc-sub">Coloque em prática o que aprendeu com a Calculadora de Precificação</p>
+
+				<div class="calc-card">
+					<img class="calc-img" src="Calculadora.png" alt="Preview da Calculadora de Precificação Preço Certo">
+
+					<div>
+						<h3 class="calc-h">Preço Certo</h3>
+						<div class="calc-kicker">Calculadora de Precificação Inteligente</div>
+						<p class="calc-text">
+							Utilize a ferramenta interativa para calcular o preço de venda ideal considerando todos os pilares:
+							CMV/CSV, despesas, impostos, comissão e lucro desejado.
+						</p>
+						<p class="calc-text">
+							Faça simulações, ajuste cenários e encontre o preço perfeito para seu produto ou serviço.
+						</p>
+
+						<a class="calc-cta" href="https://duclao.github.io/Calculadora-Precificacao/" target="_blank"
+							rel="noopener">Acessar Calculadora →</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- Footer -->
+		<footer class="footer">
+
+
+			<section class="author-gradient" id="autor">
+				<div class="author-wrap">
+					<h2 style="font-size:2.2em;font-weight:800;margin-bottom:12px;color:#fff">Sobre o Autor</h2>
+					<img class="author-photo" src="autor-eduardo.jpg" alt="Foto de Eduardo Pires">
+					<div class="author-name">Eduardo Pires</div>
+					<p class="author-sub">
+						Bacharel em Ciências Contábeis, Analista de Dados, CEO da E‑Tech Sistemas e sócio administrativo da
+						HubMaster — plataforma de tecnologia para gestão e automação comercial.
+					</p>
+					<p class="author-text">
+						Há mais de 15 anos ajudando empresas a aumentarem eficiência, controle e lucratividade por meio de dados e
+						tecnologia.
+						Cria soluções e conteúdos focados em inovação, performance e resultados para revendas de software e o varejo
+						brasileiro.
+					</p>
+					<div class="author-logos">
+						<img src="logo-etech.png" alt="E‑Tech Sistemas">
+						<img src="logo-hubmaster.png" alt="HubMaster">
+					</div>
+					<div class="author-social">
+						<a class="btn-pill" href="https://wa.me/5575999553626" target="_blank" rel="noopener">WhatsApp</a>
+						<a class="btn-pill" href="#" target="_blank" rel="noopener">LinkedIn</a>
+						<a class="btn-pill" href="#" target="_blank" rel="noopener">Instagram</a>
+					</div>
+					<p style="font-size:14px;color:#64748b;margin-top:8px">
+						© 2025 — Eduardo Pires | E‑Tech Sistemas & HubMaster — Todos os direitos reservados.
+					</p>
+				</div>
+			</section>
+			<p>&copy; 2025 MasterLab - Academy para Revendas de Software. Todos os direitos reservados.</p>
+			<p style="margin-top: 10px; font-size: 0.85em;">Parte da plataforma <strong>HubMaster</strong> - A Central de
+				Comando da sua Revenda.</p>
+		</footer>
+	</div>
+
+	<script>
+		(function () {
+			const btn = document.getElementById('menuBtn');
+			const list = document.getElementById('menuList');
+			if (!btn || !list) return;
+			btn.addEventListener('click', () => {
+				const open = btn.getAttribute('aria-expanded') === 'true';
+				btn.setAttribute('aria-expanded', String(!open));
+				list.hidden = open;
+			});
+		})();
+	</script>
+
+</body>
+
+</html>
