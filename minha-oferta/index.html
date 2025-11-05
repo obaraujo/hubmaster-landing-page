@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Minha Oferta | HubMaster</title>
+	<meta name="description"
+		content="Exibição profissional de ofertas em TVs, tablets e celulares — com imagens automáticas, vídeos e atualização em tempo real direto do ERP." />
+	<link rel.icon" type="image/png" href="logo.png">
+
+	<!-- Tailwind CSS CDN -->
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Configuração Personalizada do Tailwind -->
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['Inter', 'sans-serif'],
+					},
+					colors: {
+						// Cor de fundo escura principal
+						dark: {
+							900: '#09090b', // Fundo principal
+							800: '#1a1a1f', // Cards e elementos
+							700: '#2a2a2f', // Bordas
+						},
+						// Cor primária vibrante (inspirada no logo)
+						primary: {
+							500: '#6d28d9', // Roxo principal (botões)
+							600: '#5b21b6', // Hover
+							700: '#4c1d95', // Mais escuro
+						},
+					},
+				},
+			},
+		}
+	</script>
+	<!-- Google Fonts - Inter -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<style>
+		/* Define a fonte Inter como padrão */
+		body {
+			font-family: 'Inter', sans-serif;
+			background-color: #09090b;
+			/* Fundo principal escuro */
+			color: #f4f4f5;
+			/* Texto principal claro */
+		}
+
+		/* Oculta a barra de rolagem (opcional) */
+		.scrollbar-hide::-webkit-scrollbar {
+			display: none;
+		}
+
+		.scrollbar-hide {
+			-ms-overflow-style: none;
+			/* IE e Edge */
+			scrollbar-width: none;
+			/* Firefox */
+		}
+	</style>
+</head>
+
+<body class="antialiased">
+
+	<!-- ===== Menu de Navegação Fixo (Padrão Home) ===== -->
+	<header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
+		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+				<!-- Logo -->
+				<div class="flex-shrink-0">
+					<a href="/" title="HubMaster">
+						<!-- Assumindo que 'logo-full.png' é o padrão -->
+						<img class="h-8 w-auto" src="/logo-full.png" alt="HubMaster Logo">
+					</a>
+				</div>
+
+				<!-- Links de Navegação (Desktop) -->
+				<div class="hidden md:flex items-center space-x-6">
+					<a href="/#sobre"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre o
+						HubMaster</a>
+					<a href="/#detalhes"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Detalhes</a>
+					<!-- Link Ativo para esta página -->
+					<a href="minha-oferta-padronizada.html"
+						class="text-white bg-zinc-800 px-3 py-2 rounded-md text-sm font-medium">Minha Oferta</a>
+					<a href="/#faq"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQ</a>
+				</div>
+
+				<!-- Botão CTA (Desktop) -->
+				<div class="hidden md:block">
+					<a href="/#cta"
+						class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-primary-500 transition-all transform hover:scale-105">
+						Solicitar Demonstração
+					</a>
+				</div>
+
+				<!-- Botão do Menu Móvel (Mobile) -->
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn" type="button"
+						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+						aria-controls="mobile-menu" aria-expanded="false">
+						<span class="sr-only">Abrir menu principal</span>
+						<svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+						</svg>
+						<svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Menu Móvel (Mobile) -->
+		<div class="md:hidden hidden" id="mobile-menu">
+			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+				<a href="/#sobre"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Sobre
+					o HubMaster</a>
+				<a href="/#detalhes"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Detalhes</a>
+				<a href="minha-oferta-padronizada.html"
+					class="text-white bg-zinc-800 block px-3 py-2 rounded-md text-base font-medium">Minha Oferta</a>
+				<a href="/#faq"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">FAQ</a>
+			</div>
+			<div class="px-4 pb-4">
+				<a href="/#cta"
+					class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-primary-500 transition-all">
+					Solicitar Demonstração
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<!-- ===== Seção Hero (Minha Oferta) ===== -->
+		<section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+			<!-- Fundo com brilho roxo -->
+			<div class="absolute inset-0 -z-10 overflow-hidden">
+				<div
+					class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-900/50 rounded-full blur-3xl opacity-30 animate-pulse">
+				</div>
+				<div
+					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-700/50 rounded-full blur-3xl opacity-20 animate-pulse"
+					style="animation-delay: 2s;"></div>
+			</div>
+
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+				<span
+					class="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-primary-500/10 text-primary-400 ring-1 ring-inset ring-primary-500/20">
+					Solução para varejo digital
+				</span>
+
+				<h1
+					class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400 leading-tight">
+					Minha Oferta
+				</h1>
+				<p class="mt-6 text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto">
+					Exibição profissional de ofertas em TVs, tablets e celulares — com imagens automáticas, vídeos e
+					atualização em
+					tempo real direto do ERP.
+				</p>
+				<div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+					<a href="#como-funciona"
+						class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-lg font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-primary-500 transition-all transform hover:scale-105">
+						Como funciona
+					</a>
+					<a href="/" target="_blank" rel="noopener"
+						class="inline-flex items-center justify-center px-8 py-3 border border-zinc-700 text-lg font-semibold rounded-lg text-zinc-300 bg-zinc-800/50 hover:bg-zinc-800 transition-colors">
+						Conhecer o HubMaster
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===== VÍDEOS EM DESTAQUE (topo) ===== -->
+		<section class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- Vídeo 1 -->
+					<div
+						class="w-full aspect-video bg-zinc-800 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<video src="VIDEO1.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+
+					</div>
+					<!-- Vídeo 2 -->
+					<div
+						class="w-full aspect-video bg-zinc-800 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<video src="VIDEO2.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===== COMO FUNCIONA ===== -->
+		<section id="como-funciona" class="py-20 sm:py-28">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="max-w-3xl mx-auto text-center">
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+						Como funciona
+					</h2>
+					<p class="mt-6 text-lg text-zinc-300">
+						O lojista cria/edita a oferta no ERP. O produto é identificado pelo <strong>código de
+							barras</strong>. A imagem é puxada
+						do nosso
+						banco com milhões de itens — e, se necessário, pode ser trocada por uma imagem personalizada. O
+						painel roda no
+						navegador
+						de qualquer dispositivo (TV, totem, tablet, celular ou PC).
+					</p>
+				</div>
+
+				<!-- Checklist -->
+				<ul class="mt-16 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+					<li class="flex items-start space-x-3">
+						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+						</svg>
+						<span class="text-zinc-300">Atualização automática e em <strong>tempo real</strong> — mudou no
+							ERP, mudou na TV</span>
+					</li>
+					<li class="flex items-start space-x-3">
+						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+						</svg>
+						<span class="text-zinc-300">Banco de imagens com <strong>+2 milhões</strong> de produtos</span>
+					</li>
+					<li class="flex items-start space-x-3">
+						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+						</svg>
+						<span class="text-zinc-300">Suporte a <strong>vídeos promocionais</strong> no mesmo painel</span>
+					</li>
+					<li class="flex items-start space-x-3">
+						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+						</svg>
+						<span class="text-zinc-300">Exibição em TV, tablet, celular e computador</span>
+					</li>
+					<li class="flex items-start space-x-3">
+						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+						</svg>
+						<span class="text-zinc-300">Sem precisar atualizar tela ou navegador</span>
+					</li>
+					<li class="flex items-start space-x-3">
+						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+						</svg>
+						<span class="text-zinc-300">Interface limpa e moderna</span>
+					</li>
+				</ul>
+
+				<!-- Prints / imagens -->
+				<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<img src="Minhaoferta01.jpeg" alt="Oferta 1 - Minha Oferta" class="w-full h-auto object-cover" />
+					</div>
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<img src="Minhaoferta02.jpeg" alt="Oferta 2 - Minha Oferta" class="w-full h-auto object-cover" />
+					</div>
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<img src="Minhaoferta03.jpeg" alt="Oferta 3 - Minha Oferta" class="w-full h-auto object-cover" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===== BENEFÍCIOS PARA LOJISTAS ===== -->
+		<section class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center max-w-3xl mx-auto">
+					<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+						Benefícios para Lojistas
+					</h2>
+					<p class="mt-6 text-lg text-zinc-300">
+						O Minha Oferta foi criado para facilitar o dia a dia do varejista, impulsionar as vendas e
+						modernizar o ponto de
+						venda sem esforço técnico.
+					</p>
+				</div>
+
+				<!-- Grid de Benefícios -->
+				<div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<!-- Benefício 1 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
+						<h3 class="text-xl font-semibold text-white">Atualização automática</h3>
+						<p class="mt-2 text-zinc-400">Mude o preço no ERP e ele aparece instantaneamente no painel — sem
+							reiniciar TV ou navegador.</p>
+					</div>
+					<!-- Benefício 2 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
+						<h3 class="text-xl font-semibold text-white">Zero trabalho manual</h3>
+						<p class="mt-2 text-zinc-400">Imagens e informações são buscadas automaticamente pelo código de
+							barras.</p>
+					</div>
+					<!-- Benefício 3 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
+						<h3 class="text-xl font-semibold text-white">Experiência visual profissional</h3>
+						<p class="mt-2 text-zinc-400">Painéis com design de alto impacto — iguais aos grandes
+							varejistas do país.</p>
+					</div>
+					<!-- Benefício 4 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
+						<h3 class="text-xl font-semibold text-white">Mais vendas e giro de estoque</h3>
+						<p class="mt-2 text-zinc-400">Promoções bem apresentadas geram desejo imediato e aumentam
+							conversão.</p>
+					</div>
+					<!-- Benefício 5 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
+						<h3 class="text-xl font-semibold text-white">Vídeos + Imagens</h3>
+						<p class="mt-2 text-zinc-400">Use vídeos de ofertas, campanhas e anúncios para chamar atenção no
+							PDV.</p>
+					</div>
+					<!-- Benefício 6 -->
+					<div
+						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
+						<h3 class="text-xl font-semibold text-white">Simplicidade total</h3>
+						<p class="mt-2 text-zinc-400">Basta ter o código de barras — o resto o sistema faz sozinho.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- ===== Rodapé (Padrão Home) ===== -->
+	<footer class="py-12 border-t border-zinc-800">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+				<!-- Logo e Copyright -->
+				<div class="text-center md:text-left">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto mx-auto md:mx-0" src="/logo-full.png" alt="HubMaster Logo">
+					</a>
+					<p class="mt-3 text-sm text-zinc-500">
+						&copy; <span id="yr"></span> HubMaster. Todos os direitos reservados.
+					</p>
+				</div>
+
+				<!-- Links Sociais -->
+				<div class="flex space-x-5">
+					<a href="https://instagram.com/hubmasterbr" target="_blank" rel="noopener noreferrer"
+						class="text-zinc-400 hover:text-primary-400 transition-colors" title="Instagram">
+						<span class="sr-only">Instagram</span>
+						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.227-.148-4.771-1.669-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919.058-1.266.07-1.646.07-4.85M12 0C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.053.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947C21.727 2.69 19.302.273 14.947.073 13.667.014 13.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z">
+							</path>
+						</svg>
+					</a>
+					<!-- Adicione mais redes sociais aqui se necessário -->
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// --- Script do Ano do Rodapé ---
+			document.getElementById('yr').textContent = new Date().getFullYear();
+
+			// --- Script do Menu Móvel ---
+			const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+			const mobileMenu = document.getElementById('mobile-menu');
+			const iconOpen = document.getElementById('icon-open');
+			const iconClose = document.getElementById('icon-close');
+
+			if (mobileMenuBtn) {
+				mobileMenuBtn.addEventListener('click', () => {
+					const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+					mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+					mobileMenu.classList.toggle('hidden');
+					iconOpen.classList.toggle('hidden');
+					iconClose.classList.toggle('hidden');
+				});
+			}
+
+			// Fechar menu móvel ao clicar em um link
+			if (mobileMenu) {
+				mobileMenu.querySelectorAll('a').forEach(link => {
+					link.addEventListener('click', () => {
+						mobileMenuBtn.setAttribute('aria-expanded', 'false');
+						mobileMenu.classList.add('hidden');
+						iconOpen.classList.remove('hidden');
+						iconClose.classList.add('hidden');
+					});
+				});
+			}
+		});
+	</script>
+</body>
+
+</html>
