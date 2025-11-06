@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Hub-Chat | HubMaster</title>
+	<meta name="description"
+		content="Plataforma profissional de atendimento via WhatsApp, White Label — filas, times, tags, notas internas, dashboards e integrações." />
+	<link rel="icon" type="image/png" href="/logo.png">
+
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ["Inter", "sans-serif"],
+					},
+					colors: {
+						// Cor de fundo escura principal
+						dark: {
+							900: "#09090b", // Fundo principal
+							800: "#1a1a1f", // Cards e elementos
+							700: "#2a2a2f", // Bordas
+						},
+						// Cor primária vibrante (inspirada no logo)
+						primary: {
+							500: "#6d28d9", // Roxo principal (botões)
+							600: "#5b21b6", // Hover
+							700: "#4c1d95", // Mais escuro
+						},
+					},
+				},
+			},
+		};
+	</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+		rel="stylesheet" />
+
+	<style>
+		/* Define a fonte Inter como padrão */
+		body {
+			font-family: "Inter", sans-serif;
+			background-color: #09090b;
+			/* Fundo principal escuro */
+			color: #f4f4f5;
+			/* Texto principal claro */
+		}
+	</style>
+</head>
+
+<body class="antialiased">
+	<header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
+		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+				<div class="flex-shrink-0">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto" src="/logo-full.png" alt="HubMaster Logo" />
+					</a>
+				</div>
+
+				<div class="hidden md:flex items-center space-x-6">
+					<a href="/#sobre"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre o
+						HubMaster</a>
+					<a href="/#detalhes"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Detalhes</a>
+					<a href="hub-chat-padronizado.html"
+						class="text-white bg-zinc-800 px-3 py-2 rounded-md text-sm font-medium">Hub-Chat</a>
+					<a href="/#faq"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQ</a>
+				</div>
+
+				<div class="hidden md:block">
+					<a href="/#cta"
+						class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-primary-500 transition-all transform hover:scale-105">
+						Solicitar Demonstração
+					</a>
+				</div>
+
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn" type="button"
+						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+						aria-controls="mobile-menu" aria-expanded="false">
+						<span class="sr-only">Abrir menu principal</span>
+						<svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+						</svg>
+						<svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<div class="md:hidden hidden" id="mobile-menu">
+			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+				<a href="/#sobre"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Sobre
+					o HubMaster</a>
+				<a href="/#detalhes"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Detalhes</a>
+				<a href="hub-chat-padronizado.html"
+					class="text-white bg-zinc-800 block px-3 py-2 rounded-md text-base font-medium">Hub-Chat</a>
+				<a href="/#faq"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">FAQ</a>
+			</div>
+			<div class="px-4 pb-4">
+				<a href="/#cta"
+					class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-primary-500 transition-all">
+					Solicitar Demonstração
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
+			<div class="absolute inset-0 -z-10 overflow-hidden">
+				<div
+					class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-900/50 rounded-full blur-3xl opacity-30 animate-pulse">
+				</div>
+				<div
+					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-700/50 rounded-full blur-3xl opacity-20 animate-pulse"
+					style="animation-delay: 2s"></div>
+			</div>
+
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+				<span
+					class="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-primary-500/10 text-primary-400 ring-1 ring-inset ring-primary-500/20">
+					Novo • Atendimento Omnichannel
+				</span>
+
+				<h1
+					class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400 leading-tight">
+					Hub-Chat / White Label
+				</h1>
+				<p class="mt-6 text-lg sm:text-xl text-zinc-400 max-w-3xl mx-auto">
+					Plataforma profissional de atendimento via WhatsApp, White Label —
+					filas, times, tags, notas internas, dashboards e integrações.
+					Pensada para revendas e empresas que precisam
+					organizar o suporte e acelerar a resposta ao cliente.
+				</p>
+
+				<div
+					class="mt-10 max-w-3xl mx-auto bg-zinc-800/50 border border-zinc-700 rounded-lg p-4 text-left flex items-start gap-3">
+					<svg class="w-5 h-5 text-primary-400 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20" fill="currentColor">
+						<path fill-rule="evenodd"
+							d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+							clip-rule="evenodd" />
+					</svg>
+					<span class="text-sm text-zinc-400">
+						Transparência: a operação do Hub-Chat envolve custos de
+						infraestrutura (instâncias/servidores), manutenção, suporte e
+						monitoramento com planos personalizados de acordo a sua demanda —
+						mas com clareza de confiança.
+					</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-20 sm:py-28">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div>
+						<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+							Centralize tudo em um só lugar
+						</h2>
+						<p class="mt-6 text-lg text-zinc-300">
+							Visual único para a operação: lista de tickets com tags,
+							responsáveis, status, busca inteligente e indicadores em tempo
+							real. Menos ruído, mais eficiência.
+						</p>
+						<ul class="mt-6 space-y-4 list-disc list-inside text-zinc-400">
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Atendimentos por times e filas
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Tags, notas internas e transferência entre operadores
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Mensagens rápidas, anexos e controle de SLA
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Registros para auditoria e melhoria contínua
+							</li>
+						</ul>
+						<div class="mt-8 grid grid-cols-3 gap-4">
+							<div class="bg-zinc-800/50 border border-zinc-700 p-4 rounded-lg">
+								<span class="block text-2xl font-bold text-primary-400">↓ 35%</span>
+								<span class="text-sm text-zinc-400">Tempo médio de resposta</span>
+							</div>
+							<div class="bg-zinc-800/50 border border-zinc-700 p-4 rounded-lg">
+								<span class="block text-2xl font-bold text-primary-400">↑ 42%</span>
+								<span class="text-sm text-zinc-400">Produtividade da equipe</span>
+							</div>
+							<div class="bg-zinc-800/50 border border-zinc-700 p-4 rounded-lg">
+								<span class="block text-2xl font-bold text-primary-400">↑ 27%</span>
+								<span class="text-sm text-zinc-400">Satisfação do cliente</span>
+							</div>
+						</div>
+					</div>
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<img src="HUBCHAT01.png" alt="Hub-Chat — tela principal de atendimentos"
+							class="w-full h-auto object-cover" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden lg:order-first">
+						<img src="HUBCHAT02.png" alt="Hub-Chat — Painel Kanban por atendente" class="w-full h-auto object-cover" />
+					</div>
+					<div>
+						<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+							Fluxo visual por atendente (Kanban)
+						</h2>
+						<p class="mt-6 text-lg text-zinc-300">
+							Acompanhe o volume por pessoa e o andamento dos tickets. A visão
+							Kanban facilita priorização e distribuição de carga.
+						</p>
+						<ul class="mt-6 space-y-4 list-disc list-inside text-zinc-400">
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Colunas por atendente e “Pendentes”
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Atualização em tempo real
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Indicadores de leitura e últimos eventos
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Ideal para operações de suporte e sucesso do cliente
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-20 sm:py-28">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div>
+						<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+							Métricas e Relatórios que importam
+						</h2>
+						<p class="mt-6 text-lg text-zinc-300">
+							Tome decisões com base em dados: atendimentos por usuário, por
+							dia, por fila; evolução de volume e picos de demanda.
+						</p>
+						<ul class="mt-6 space-y-4 list-disc list-inside text-zinc-400">
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Comparativos por período
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Filtro por operador, fila ou tag
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Exportação para auditorias e reuniões de desempenho
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Clareza na alocação de equipes
+							</li>
+						</ul>
+					</div>
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
+						<img src="HUBCHAT03.png" alt="Hub-Chat — Relatórios e gráficos de atendimentos"
+							class="w-full h-auto object-cover" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div
+						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden lg:order-first">
+						<img src="HUBCHAT04.png" alt="Hub-Chat — Conversa com tags, áudios e notas internas"
+							class="w-full h-auto object-cover" />
+					</div>
+					<div>
+						<h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+							Conversa poderosa para quem atende
+						</h2>
+						<p class="mt-6 text-lg text-zinc-300">
+							Tudo que o operador precisa, sem fricção: notas internas, tags,
+							áudios, anexos, atalhos e histórico preservado.
+						</p>
+						<ul class="mt-6 space-y-4 list-disc list-inside text-zinc-400">
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Tags e observações sem expor ao cliente
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Encaminhamento entre setores e filas
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Busca por mensagens e contatos
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Fluxos consistentes para diminuir retrabalho
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-20 sm:py-28">
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="bg-zinc-800/50 border border-zinc-700 p-8 rounded-2xl">
+						<h2 class="text-2xl font-bold text-white mb-4">
+							Benefícios para Revendas & Empresas
+						</h2>
+						<ul class="space-y-3 list-disc list-inside text-zinc-300">
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Padrão de atendimento com processos claros e
+								previsíveis
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Agilidade com filas, distribuição e priorização
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Controle gerencial com relatórios e trilhas de
+								auditoria
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Escalabilidade — adiciona times, instâncias e acessos
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Segurança — governança dos dados e histórico
+								preservado
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>WHITE LABEL — tenha sua própria plataforma com sua
+								marca!
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Domínio — utilize seu próprio endereço
+							</li>
+						</ul>
+					</div>
+
+					<div class="bg-zinc-800/50 border border-zinc-700 p-8 rounded-2xl">
+						<h2 class="text-2xl font-bold text-white mb-4">
+							Integrações e Operação
+						</h2>
+						<p class="text-zinc-300 mb-4">
+							Integramos o Hub-Chat ao seu ecossistema (ERP, painéis internos
+							e outras plataformas). A operação considera:
+						</p>
+						<ul class="space-y-3 list-disc list-inside text-zinc-300">
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Instâncias/servidores dimensionados para o seu volume
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Monitoramento e suporte contínuos
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Treinamento do time e revisão de processos
+							</li>
+							<li class="flex items-center">
+								<svg class="w-5 h-5 text-purple-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor"
+									viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+								</svg>Onboarding com configuração de filas, tags e respostas
+								rápidas
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="cta" class="py-24 bg-gradient-to-t from-zinc-950 to-zinc-900/70">
+			<div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+				<h2 class="text-3xl sm:text-3xl lg:text-4xl font-extrabold text-white">
+					Quer ver o Hub-Chat na sua operação?
+				</h2>
+				<p class="mt-6 text-lg sm:text-xl text-zinc-300">
+					Mostramos em poucos minutos como organizar o atendimento e entregar
+					velocidade com governança.
+				</p>
+				<div class="mt-10">
+					<a href="https://wa.me/5575998454791?text=Ol%C3%A1%21%20Gostaria%20de%20conversar%20sobre%20o%20Hub-Chat."
+						target="_blank" rel="noopener noreferrer"
+						class="inline-flex items-center justify-center px-10 gap-2 py-4 text-xl font-bold text-white bg-primary-600 rounded-lg shadow-lg shadow-primary-500/30 transition-all duration-300 transform hover:scale-110 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-500/50">
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+							<path
+								d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+						</svg>
+						Quero conversar sobre o Hub-Chat
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="py-12 border-t border-zinc-800">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+				<div class="text-center md:text-left">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto mx-auto md:mx-0" src="/logo-full.png" alt="HubMaster Logo" />
+					</a>
+					<p class="mt-3 text-sm text-zinc-500">
+						&copy; <span id="yr"></span> HubMaster. Todos os direitos
+						reservados.
+					</p>
+				</div>
+
+				<div class="flex space-x-5">
+					<a href="https://instagram.com/hubmasterbr" target="_blank" rel="noopener noreferrer"
+						class="text-zinc-400 hover:text-primary-400 transition-colors" title="Instagram">
+						<span class="sr-only">Instagram</span>
+						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.227-.148-4.771-1.669-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919.058-1.266.07-1.646.07-4.85M12 0C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.053.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947C21.727 2.69 19.302.273 14.947.073 13.667.014 13.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z">
+							</path>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			// --- Script do Ano do Rodapé ---
+			document.getElementById("yr").textContent = new Date().getFullYear();
+
+			// --- Script do Menu Móvel ---
+			const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+			const mobileMenu = document.getElementById("mobile-menu");
+			const iconOpen = document.getElementById("icon-open");
+			const iconClose = document.getElementById("icon-close");
+
+			if (mobileMenuBtn) {
+				mobileMenuBtn.addEventListener("click", () => {
+					const isExpanded =
+						mobileMenuBtn.getAttribute("aria-expanded") === "true";
+					mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
+					mobileMenu.classList.toggle("hidden");
+					iconOpen.classList.toggle("hidden");
+					iconClose.classList.toggle("hidden");
+				});
+			}
+
+			// Fechar menu móvel ao clicar em um link
+			if (mobileMenu) {
+				mobileMenu.querySelectorAll("a").forEach((link) => {
+					link.addEventListener("click", () => {
+						mobileMenuBtn.setAttribute("aria-expanded", "false");
+						mobileMenu.classList.add("hidden");
+						iconOpen.classList.remove("hidden");
+						iconClose.classList.add("hidden");
+					});
+				});
+			}
+		});
+	</script>
+</body>
+
+</html>

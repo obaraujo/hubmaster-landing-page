@@ -4,36 +4,29 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Primary Meta Tags -->
-	<title>HubMaster - A Central de Comando da sua Revend</title>
-	<meta name="title" content="HubMaster - A Central de Comando da sua Revend" />
+	<title>HubMaster - A Central de Comando da sua Revenda</title>
+	<meta name="title" content="HubMaster - A Central de Comando da sua Revenda" />
 	<meta name="description"
 		content="Descubra o HubMaster, a central de comando definitiva para revendas de software ERP. Centralize operações, clientes e sistemas. Otimize sua gestão e cresça!" />
 
-	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://www.hubmaster.com.br" />
-	<meta property="og:title" content="HubMaster - A Central de Comando da sua Revend" />
+	<meta property="og:title" content="HubMaster - A Central de Comando da sua Revenda" />
 	<meta property="og:description"
 		content="Descubra o HubMaster, a central de comando definitiva para revendas de software ERP. Centralize operações, clientes e sistemas. Otimize sua gestão e cresça!" />
-	<meta property="og:image" content="//ogimage.png" />
+	<meta property="og:image" content="https://www.hubmaster.com.br/ogimage.png" />
 
-	<!-- X (Twitter) -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://www.hubmaster.com.br" />
-	<meta property="twitter:title" content="HubMaster - A Central de Comando da sua Revend" />
+	<meta property="twitter:title" content="HubMaster - A Central de Comando da sua Revenda" />
 	<meta property="twitter:description"
 		content="Descubra o HubMaster, a central de comando definitiva para revendas de software ERP. Centralize operações, clientes e sistemas. Otimize sua gestão e cresça!" />
-	<meta property="twitter:image" content="//ogimage.png" />
+	<meta property="twitter:image" content="https://www.hubmaster.com.br/ogimage.png" />
 
-	<!-- Meta Tags Generated with https://metatags.io -->
-	<link rel="icon" type="image/png" href="logo.png">
+	<link rel="icon" type="image/png" href="/logo.png">
 
-	<!-- Link Swiper's CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-	<!-- Tailwind CSS CDN -->
 	<script src="https://cdn.tailwindcss.com"></script>
-	<!-- Configuração Personalizada do Tailwind -->
 	<script>
 		tailwind.config = {
 			theme: {
@@ -59,7 +52,6 @@
 			},
 		}
 	</script>
-	<!-- Google Fonts - Inter -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -152,18 +144,15 @@
 
 <body class="antialiased">
 
-	<!-- ===== Menu de Navegação Fixo ===== -->
 	<header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
 		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16">
-				<!-- Logo -->
 				<div class="flex-shrink-0">
 					<a href="#" title="HubMaster">
 						<img class="h-8 w-auto" src="logo-full.png" alt="HubMaster Logo">
 					</a>
 				</div>
 
-				<!-- Links de Navegação (Desktop) -->
 				<div class="hidden md:flex items-center space-x-6">
 					<a href="/masterlab/"
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Master
@@ -177,7 +166,6 @@
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQ</a>
 				</div>
 
-				<!-- Botão CTA (Desktop) -->
 				<div class="hidden md:block">
 					<a href="#cta"
 						class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-lg shadow-sm text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-purple-500 transition-all transform hover:scale-105">
@@ -185,18 +173,15 @@
 					</a>
 				</div>
 
-				<!-- Botão do Menu Móvel (Mobile) -->
 				<div class="md:hidden flex items-center">
 					<button id="mobile-menu-btn" type="button"
 						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
 						aria-controls="mobile-menu" aria-expanded="false">
 						<span class="sr-only">Abrir menu principal</span>
-						<!-- Ícone Hamburger -->
 						<svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
 							stroke="currentColor" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
 						</svg>
-						<!-- Ícone 'X' (fechar) -->
 						<svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
 							viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -206,7 +191,6 @@
 			</div>
 		</nav>
 
-		<!-- Menu Móvel (Mobile) -->
 		<div class="md:hidden hidden" id="mobile-menu">
 			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 				<a href="#sobre"
@@ -226,10 +210,8 @@
 		</div>
 	</header>
 
-	<!-- ===== Seção Principal (Hero) ===== -->
 	<main>
 		<section id="hero" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-			<!-- Fundo com brilho roxo -->
 			<div class="absolute inset-0 -z-10 overflow-hidden">
 				<div
 					class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-900/50 rounded-full blur-3xl opacity-30 animate-pulse">
@@ -241,7 +223,6 @@
 
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-					<!-- Coluna de Texto -->
 					<div class="text-center md:text-left fade-in-element">
 						<h1
 							class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400 leading-tight">
@@ -263,12 +244,10 @@
 						</div>
 					</div>
 
-					<!-- Coluna da Imagem (Painel Admin) -->
 					<div class="fade-in-element" style="animation-delay: 0.2s;">
 						<div
 							class="relative w-full aspect-[16/11] bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 p-4">
 
-							<!-- Header Falso do Painel -->
 							<div class="flex items-center mb-2 gap-4">
 								<div class="flex items-center space-x-2">
 									<span class="w-3 h-3 bg-red-500 rounded-full"></span>
@@ -278,7 +257,6 @@
 								<p id="description-service" class="text-center font-bold"></p>
 							</div>
 
-							<!-- Conteúdo Falso do Painel -->
 
 							<div class="swiper mySwiper h-[calc(100%-20px)]">
 								<div class="swiper-wrapper">
@@ -301,7 +279,6 @@
 							</div>
 
 
-							<!-- Reflexo Falso -->
 							<div class="absolute inset-0 rounded-2xl border border-white/5"></div>
 						</div>
 					</div>
@@ -309,7 +286,6 @@
 			</div>
 		</section>
 
-		<!-- ===== Seção Sobre (Benefícios) ===== -->
 		<section id="sobre" class="py-20 sm:py-28 bg-zinc-900/70">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="text-center max-w-3xl mx-auto fade-in-element">
@@ -327,9 +303,7 @@
 					</p>
 				</div>
 
-				<!-- Grid de Benefícios -->
 				<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-					<!-- Benefício 1 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1 fade-in-element"
 						style="animation-delay: 0.2s;">
@@ -347,7 +321,6 @@
 							críticos da sua revenda.</p>
 					</div>
 
-					<!-- Benefício 2 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1 fade-in-element"
 						style="animation-delay: 0.4s;">
@@ -365,7 +338,6 @@
 							inteligente.</p>
 					</div>
 
-					<!-- Benefício 3 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1 fade-in-element"
 						style="animation-delay: 0.6s;">
@@ -386,7 +358,6 @@
 			</div>
 		</section>
 
-		<!-- ===== Seção Detalhes (Carrossel) ===== -->
 		<section id="detalhes" class="py-20 sm:py-28">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="text-center max-w-3xl mx-auto fade-in-element">
@@ -398,22 +369,16 @@
 					</p>
 				</div>
 
-				<!-- Carrossel -->
 				<div class="mt-16 relative fade-in-element" style="animation-delay: 0.2s;">
-					<!-- Container dos slides -->
 					<div id="carousel-container"
 						class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide -mx-4 px-4 space-x-6">
-						<!-- Slide 1: Hub Painel -->
 						<a class="w-full sm:w-2/3 lg:w-1/2 flex-shrink-0 snap-center" href="/painel">
 							<div
 								class="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-700 overflow-hidden shadow-lg">
-								<!-- Imagem com 100% de opacidade -->
 								<img src="painel-hub.png" alt="Demonstração do Painel Hub"
 									class="absolute inset-0 w-full h-full object-cover" />
-								<!-- Gradiente para legibilidade do texto -->
 								<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent rounded-2xl">
 								</div>
-								<!-- Conteúdo de Texto -->
 								<div class="relative h-full flex flex-col justify-end p-6 z-10">
 									<h3 class="text-2xl font-bold text-white">Hub Painel</h3>
 									<p class="relative text-zinc-300 mt-1">Gerencie informações vitais de clientes: sistema, versão,
@@ -422,7 +387,6 @@
 								</div>
 							</div>
 						</a>
-						<!-- Slide 2: Hub Contábil -->
 						<a class="w-full sm:w-2/3 lg:w-1/2 flex-shrink-0 snap-center" href="/contabil">
 							<div
 								class="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-700 overflow-hidden shadow-lg">
@@ -438,7 +402,6 @@
 								</div>
 							</div>
 						</a>
-						<!-- Slide 3: Minha Oferta -->
 						<a class="w-full sm:w-2/3 lg:w-1/2 flex-shrink-0 snap-center" href="/minha-oferta/">
 							<div
 								class="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-700 overflow-hidden shadow-lg">
@@ -455,7 +418,6 @@
 								</div>
 							</div>
 						</a>
-						<!-- Slide 4: Consulta Preço -->
 						<div class="w-full sm:w-2/3 lg:w-1/2 flex-shrink-0 snap-center">
 							<div
 								class="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-700 overflow-hidden shadow-lg">
@@ -472,8 +434,7 @@
 								</div>
 							</div>
 						</div>
-						<!-- Slide 5: Hub Chat -->
-						<div class="w-full sm:w-2/3 lg:w-1/2 flex-shrink-0 snap-center">
+						<a class="w-full sm:w-2/3 lg:w-1/2 flex-shrink-0 snap-center" href="/hubchat/">
 							<div
 								class="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-700 overflow-hidden shadow-lg">
 								<img src="hubchat.png" alt="Demonstração do Hub Chat"
@@ -486,10 +447,9 @@
 										Label do HubMaster. (Ela fica com sua cara).</p>
 								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 
-					<!-- Botões de Navegação do Carrossel -->
 					<div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-0 sm:-px-4 z-10">
 						<button id="carousel-prev"
 							class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all flex items-center justify-center shadow-lg">
@@ -510,11 +470,9 @@
 			</div>
 		</section>
 
-		<!-- ===== Seção FAQ ===== -->
 		<section id="faq" class="py-20 md:py-28 bg-dark-800/50">
 			<div class="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 
-				<!-- Título da Seção -->
 				<div class="text-center max-w-3xl mx-auto mb-16">
 					<h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 fade-in">
 						Dúvidas Frequentes
@@ -524,10 +482,8 @@
 					</p>
 				</div>
 
-				<!-- Lista de FAQ (Acordeão) -->
 				<div class="space-y-4 fade-in">
 
-					<!-- Item 1 -->
 					<div class="faq-item bg-dark-900 border border-dark-700 rounded-lg overflow-hidden">
 						<button class="faq-question w-full flex justify-between items-center text-left p-6">
 							<span class="text-lg font-semibold text-white">Como funciona a integração com meu ERP?</span>
@@ -545,7 +501,6 @@
 						</div>
 					</div>
 
-					<!-- Item 2 -->
 					<div class="faq-item bg-dark-900 border border-dark-700 rounded-lg overflow-hidden">
 						<button class="faq-question w-full flex justify-between items-center text-left p-6">
 							<span class="text-lg font-semibold text-white">Qual é o modelo de pagamento?</span>
@@ -562,7 +517,6 @@
 						</div>
 					</div>
 
-					<!-- Item 3 -->
 					<div class="faq-item bg-dark-900 border border-dark-700 rounded-lg overflow-hidden">
 						<button class="faq-question w-full flex justify-between items-center text-left p-6">
 							<span class="text-lg font-semibold text-white">Existe um período de teste (trial)?</span>
@@ -580,7 +534,6 @@
 						</div>
 					</div>
 
-					<!-- Item 4 -->
 					<div class="faq-item bg-dark-900 border border-dark-700 rounded-lg overflow-hidden">
 						<button class="faq-question w-full flex justify-between items-center text-left p-6">
 							<span class="text-lg font-semibold text-white">Como funciona o suporte técnico?</span>
@@ -601,7 +554,6 @@
 			</div>
 		</section>
 
-		<!-- ===== Seção CTA (WhatsApp) ===== -->
 		<section id="cta" class="py-24 bg-gradient-to-t from-zinc-950 to-zinc-900/70">
 			<div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8 fade-in-element">
 				<h2 class="text-3xl sm:text-3xl lg:text-4xl font-extrabold text-white">
@@ -612,12 +564,10 @@
 					transformação.
 				</p>
 				<div class="mt-10">
-					<!-- ATENÇÃO: Substitua 'SEUNUMERO' pelo seu número de WhatsApp com código do país (ex: 5511999998888) -->
 					<a href="https://wa.me/5575998454791?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20do%20HubMaster."
 						target="_blank" rel="noopener noreferrer"
 						class="inline-flex items-center justify-center px-10 gap-2 py-4 text-xl font-bold text-white bg-purple-600 rounded-lg shadow-lg shadow-purple-500/30 transition-all duration-300 transform hover:scale-110 hover:bg-purple-700 focus:outline-none focus:ring-4 focus:ring-purple-500/50">
 
-						<!-- Ícone do WhatsApp -->
 						<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
 							<path
 								d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.068-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
@@ -629,11 +579,9 @@
 		</section>
 	</main>
 
-	<!-- ===== Rodapé ===== -->
 	<footer class="py-12 border-t border-zinc-800">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
-				<!-- Logo e Copyright -->
 				<div class="text-center md:text-left">
 					<a href="#" title="HubMaster">
 						<img class="h-8 w-auto mx-auto md:mx-0" src="logo-full.png" alt="HubMaster Logo">
@@ -643,19 +591,16 @@
 					</p>
 				</div>
 
-				<!-- Links Sociais -->
 				<div class="flex space-x-5">
 					<a href="https://instagram.com/hubmasterbr" target="_blank" rel="noopener noreferrer"
 						class="text-zinc-400 hover:text-purple-400 transition-colors" title="Instagram">
 						<span class="sr-only">Instagram</span>
-						<!-- Ícone do Instagram -->
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.227-.148-4.771-1.669-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669-4.771 4.919-4.919.058-1.266.07-1.646.07-4.85M12 0C8.74 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.053.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.687.073-4.947s-.014-3.667-.072-4.947C21.727 2.69 19.302.273 14.947.073 13.667.014 13.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z">
 							</path>
 						</svg>
 					</a>
-					<!-- Adicione mais redes sociais aqui se necessário -->
 				</div>
 			</div>
 		</div>
@@ -759,7 +704,6 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-	<!-- Initialize Swiper -->
 	<script>
 		var swiper = new Swiper(".mySwiper", {
 			spaceBetween: 30,

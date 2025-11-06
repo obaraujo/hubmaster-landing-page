@@ -7,11 +7,9 @@
 	<title>Minha Oferta | HubMaster</title>
 	<meta name="description"
 		content="Exibição profissional de ofertas em TVs, tablets e celulares — com imagens automáticas, vídeos e atualização em tempo real direto do ERP." />
-	<link rel.icon" type="image/png" href="logo.png">
+	<link rel="icon" type="image/png" href="/logo.png">
 
-	<!-- Tailwind CSS CDN -->
 	<script src="https://cdn.tailwindcss.com"></script>
-	<!-- Configuração Personalizada do Tailwind -->
 	<script>
 		tailwind.config = {
 			theme: {
@@ -37,7 +35,6 @@
 			},
 		}
 	</script>
-	<!-- Google Fonts - Inter -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -69,33 +66,27 @@
 
 <body class="antialiased">
 
-	<!-- ===== Menu de Navegação Fixo (Padrão Home) ===== -->
 	<header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
 		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16">
-				<!-- Logo -->
 				<div class="flex-shrink-0">
 					<a href="/" title="HubMaster">
-						<!-- Assumindo que 'logo-full.png' é o padrão -->
 						<img class="h-8 w-auto" src="/logo-full.png" alt="HubMaster Logo">
 					</a>
 				</div>
 
-				<!-- Links de Navegação (Desktop) -->
 				<div class="hidden md:flex items-center space-x-6">
 					<a href="/#sobre"
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Sobre o
 						HubMaster</a>
 					<a href="/#detalhes"
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Detalhes</a>
-					<!-- Link Ativo para esta página -->
 					<a href="minha-oferta-padronizada.html"
 						class="text-white bg-zinc-800 px-3 py-2 rounded-md text-sm font-medium">Minha Oferta</a>
 					<a href="/#faq"
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQ</a>
 				</div>
 
-				<!-- Botão CTA (Desktop) -->
 				<div class="hidden md:block">
 					<a href="/#cta"
 						class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-primary-500 transition-all transform hover:scale-105">
@@ -103,7 +94,6 @@
 					</a>
 				</div>
 
-				<!-- Botão do Menu Móvel (Mobile) -->
 				<div class="md:hidden flex items-center">
 					<button id="mobile-menu-btn" type="button"
 						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
@@ -122,7 +112,6 @@
 			</div>
 		</nav>
 
-		<!-- Menu Móvel (Mobile) -->
 		<div class="md:hidden hidden" id="mobile-menu">
 			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 				<a href="/#sobre"
@@ -145,9 +134,7 @@
 	</header>
 
 	<main>
-		<!-- ===== Seção Hero (Minha Oferta) ===== -->
 		<section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-			<!-- Fundo com brilho roxo -->
 			<div class="absolute inset-0 -z-10 overflow-hidden">
 				<div
 					class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-900/50 rounded-full blur-3xl opacity-30 animate-pulse">
@@ -185,17 +172,14 @@
 			</div>
 		</section>
 
-		<!-- ===== VÍDEOS EM DESTAQUE (topo) ===== -->
 		<section class="py-20 sm:py-28 bg-zinc-900/70">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<!-- Vídeo 1 -->
 					<div
 						class="w-full aspect-video bg-zinc-800 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
 						<video src="VIDEO1.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
 
 					</div>
-					<!-- Vídeo 2 -->
 					<div
 						class="w-full aspect-video bg-zinc-800 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
 						<video src="VIDEO2.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
@@ -205,7 +189,6 @@
 			</div>
 		</section>
 
-		<!-- ===== COMO FUNCIONA ===== -->
 		<section id="como-funciona" class="py-20 sm:py-28">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="max-w-3xl mx-auto text-center">
@@ -223,7 +206,6 @@
 					</p>
 				</div>
 
-				<!-- Checklist -->
 				<ul class="mt-16 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
 					<li class="flex items-start space-x-3">
 						<svg class="flex-shrink-0 h-6 w-6 text-primary-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -270,7 +252,6 @@
 					</li>
 				</ul>
 
-				<!-- Prints / imagens -->
 				<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
 					<div
 						class="bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-primary-900/20 overflow-hidden">
@@ -288,7 +269,6 @@
 			</div>
 		</section>
 
-		<!-- ===== BENEFÍCIOS PARA LOJISTAS ===== -->
 		<section class="py-20 sm:py-28 bg-zinc-900/70">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="text-center max-w-3xl mx-auto">
@@ -302,44 +282,37 @@
 					</p>
 				</div>
 
-				<!-- Grid de Benefícios -->
 				<div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<!-- Benefício 1 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
 						<h3 class="text-xl font-semibold text-white">Atualização automática</h3>
 						<p class="mt-2 text-zinc-400">Mude o preço no ERP e ele aparece instantaneamente no painel — sem
 							reiniciar TV ou navegador.</p>
 					</div>
-					<!-- Benefício 2 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
 						<h3 class="text-xl font-semibold text-white">Zero trabalho manual</h3>
 						<p class="mt-2 text-zinc-400">Imagens e informações são buscadas automaticamente pelo código de
 							barras.</p>
 					</div>
-					<!-- Benefício 3 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
 						<h3 class="text-xl font-semibold text-white">Experiência visual profissional</h3>
 						<p class="mt-2 text-zinc-400">Painéis com design de alto impacto — iguais aos grandes
 							varejistas do país.</p>
 					</div>
-					<!-- Benefício 4 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
 						<h3 class="text-xl font-semibold text-white">Mais vendas e giro de estoque</h3>
 						<p class="mt-2 text-zinc-400">Promoções bem apresentadas geram desejo imediato e aumentam
 							conversão.</p>
 					</div>
-					<!-- Benefício 5 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
 						<h3 class="text-xl font-semibold text-white">Vídeos + Imagens</h3>
 						<p class="mt-2 text-zinc-400">Use vídeos de ofertas, campanhas e anúncios para chamar atenção no
 							PDV.</p>
 					</div>
-					<!-- Benefício 6 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-primary-500 hover:shadow-2xl hover:shadow-primary-900/20 transform hover:-translate-y-1">
 						<h3 class="text-xl font-semibold text-white">Simplicidade total</h3>
@@ -350,11 +323,9 @@
 		</section>
 	</main>
 
-	<!-- ===== Rodapé (Padrão Home) ===== -->
 	<footer class="py-12 border-t border-zinc-800">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
-				<!-- Logo e Copyright -->
 				<div class="text-center md:text-left">
 					<a href="/" title="HubMaster">
 						<img class="h-8 w-auto mx-auto md:mx-0" src="/logo-full.png" alt="HubMaster Logo">
@@ -364,7 +335,6 @@
 					</p>
 				</div>
 
-				<!-- Links Sociais -->
 				<div class="flex space-x-5">
 					<a href="https://instagram.com/hubmasterbr" target="_blank" rel="noopener noreferrer"
 						class="text-zinc-400 hover:text-primary-400 transition-colors" title="Instagram">
@@ -375,7 +345,6 @@
 							</path>
 						</svg>
 					</a>
-					<!-- Adicione mais redes sociais aqui se necessário -->
 				</div>
 			</div>
 		</div>

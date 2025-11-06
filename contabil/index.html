@@ -9,9 +9,7 @@
 		content="Auditoria fiscal inteligente, downloads de XML e controle total em um único lugar para contadores." />
 	<link rel="icon" href="/logo.png">
 
-	<!-- Tailwind CSS CDN -->
 	<script src="https://cdn.tailwindcss.com"></script>
-	<!-- Configuração Personalizada do Tailwind (Padrão) -->
 	<script>
 		tailwind.config = {
 			theme: {
@@ -37,7 +35,6 @@
 			},
 		}
 	</script>
-	<!-- Google Fonts - Inter -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -52,17 +49,14 @@
 
 <body class="antialiased bg-dark-900 text-zinc-100">
 
-	<!-- Cabeçalho Fixo -->
 	<header class="sticky top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
 		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center h-16">
-				<!-- Logo -->
 				<div class="flex-shrink-0">
 					<a href="/" title="HubMaster">
 						<img class="h-8 w-auto" src="/logo-full.png" alt="HubMaster Logo">
 					</a>
 				</div>
-				<!-- Links de Navegação (Desktop) -->
 				<div class="hidden md:flex items-center space-x-6">
 					<a href="/"
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Início</a>
@@ -74,7 +68,6 @@
 					<a href="/masterlab/"
 						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">MasterLab</a>
 				</div>
-				<!-- Botão do Menu Móvel (Mobile) -->
 				<div class="md:hidden flex items-center">
 					<button id="mobile-menu-btn" type="button"
 						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
@@ -93,7 +86,6 @@
 			</div>
 		</nav>
 
-		<!-- Menu Móvel (Mobile) -->
 		<div class="md:hidden hidden" id="mobile-menu">
 			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
 				<a href="/"
@@ -111,9 +103,7 @@
 
 	<main>
 
-		<!-- Seção Hero -->
 		<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-			<!-- Fundo com brilho -->
 			<div class="absolute inset-0 -z-10 overflow-hidden">
 				<div
 					class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-900/50 rounded-full blur-3xl opacity-30 animate-pulse">
@@ -151,10 +141,8 @@
 			</div>
 		</section>
 
-		<!-- Seção Overview -->
 		<section id="overview" class="py-20 sm:py-28 bg-zinc-900/70">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-				<!-- Coluna de Texto -->
 				<div>
 					<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">
 						Centralização e eficiência fiscal
@@ -207,7 +195,6 @@
 						</li>
 					</ul>
 				</div>
-				<!-- Coluna da Imagem -->
 				<div
 					class="relative w-full aspect-video bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 p-2">
 					<img src="hub_contabil_dashboard.png" alt="Dashboard - Hub Contábil"
@@ -217,18 +204,14 @@
 			</div>
 		</section>
 
-		<!-- Seção Furo de Numeração -->
 		<section class="py-20 sm:py-28">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-				<!-- Coluna da Imagem -->
 				<div
 					class="relative w-full aspect-video bg-zinc-900/50 border border-zinc-700 rounded-2xl shadow-2xl shadow-purple-900/20 p-2 lg:order-last">
-					<!-- Imagem de Furo de Numeração. Usando a contabil.png como placeholder -->
 					<img src="hub_contabil_furo.png" alt="Relatório de Furo de Numeração - HubMaster"
 						class="rounded-xl w-full h-full object-cover">
 					<div class="absolute inset-0 rounded-2xl border border-white/5"></div>
 				</div>
-				<!-- Coluna de Texto -->
 				<div>
 					<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">
 						🔍 Auditoria inteligente de numeração
@@ -245,7 +228,6 @@
 			</div>
 		</section>
 
-		<!-- Seção Benefícios -->
 		<section class="py-20 sm:py-28 bg-zinc-900/70">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="text-center max-w-3xl mx-auto">
@@ -254,21 +236,18 @@
 					</h2>
 				</div>
 				<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-					<!-- Benefício 1 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1">
 						<h3 class="mt-2 text-xl font-semibold text-white">Menos suporte e retrabalho</h3>
 						<p class="mt-2 text-zinc-400">Busca de XMLs e conferências passam a ser automáticas, reduzindo
 							chamados e tempo operacional.</p>
 					</div>
-					<!-- Benefício 2 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1">
 						<h3 class="mt-2 text-xl font-semibold text-white">Confiabilidade fiscal</h3>
 						<p class="mt-2 text-zinc-400">Detecção de furos de numeração e contingências em tempo real,
 							evitando multas e inconsistências.</p>
 					</div>
-					<!-- Benefício 3 -->
 					<div
 						class="bg-zinc-800/50 border border-zinc-700 p-6 rounded-2xl transition-all duration-300 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-900/20 transform hover:-translate-y-1">
 						<h3 class="mt-2 text-xl font-semibold text-white">Diferencial competitivo</h3>
@@ -281,11 +260,9 @@
 
 	</main>
 
-	<!-- Rodapé -->
 	<footer class="py-12 border-t border-zinc-800">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
-				<!-- Logo e Copyright -->
 				<div class="text-center md:text-left">
 					<a href="/" title="HubMaster">
 						<img class="h-8 w-auto mx-auto md:mx-0" src="/logo-full.png" alt="HubMaster Logo">
