@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<title>Preço Certo — Calculadora de Markup | HubMaster</title>
+	<meta name="description" content="Calculadora do preço certo para seus produtos">
+	<link rel="icon" href="/logo.png">
+	<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		:root {
+			--bg1: #09090b;
+			--bg2: #1a1a1f;
+			--card: #2a2a2f;
+			--border: #2a2a2f;
+			--text: #e5e7eb;
+			--muted: #a1a1aa;
+			--brand1: #6d28d9;
+			--brand2: #4c1d95;
+			--success: #22c55e;
+			--danger: #ef4444;
+			--radius: 14px;
+			--shadow: 0 10px 24px rgba(0, 0, 0, .35);
+		}
+
+		html,
+		body {
+			margin: 0;
+			background: linear-gradient(160deg, var(--bg1), var(--bg2));
+			color: var(--text);
+			font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+		}
+
+		.container {
+			max-width: 760px;
+			margin: 0 auto;
+			padding: 10px 12px 24px;
+		}
+
+		.app-title {
+			text-align: center;
+			font-size: 28px;
+			font-weight: 900;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			color: #ffffff;
+			margin: 10px 0 6px;
+		}
+
+		.app-sub {
+			text-align: center;
+			font-size: 13px;
+			color: #94a3b8;
+			margin: 0 0 10px;
+		}
+
+		.hero {
+			background: linear-gradient(135deg, var(--brand1), var(--brand2));
+			border-radius: 16px;
+			box-shadow: var(--shadow);
+			padding: 14px;
+			text-align: center;
+		}
+
+		.hero .title {
+			font-size: 12px;
+			opacity: .9;
+			margin-bottom: 2px;
+		}
+
+		.hero .price {
+			font-size: 28px;
+			font-weight: 900;
+			margin: 0;
+			line-height: 1;
+		}
+
+		.hero .sub {
+			font-size: 11px;
+			opacity: .85;
+			margin-top: 4px;
+		}
+
+		.hero .alt {
+			margin-top: 6px;
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		.hero .alt small {
+			font-weight: 600;
+			opacity: .9;
+		}
+
+		.panel {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			box-shadow: var(--shadow);
+			margin-top: 10px;
+			overflow: hidden;
+		}
+
+		.panel-h {
+			padding: 10px 12px;
+			font-weight: 800;
+			font-size: 17px;
+			background: var(--bg2);
+			border-bottom: 1px solid var(--border);
+		}
+
+		.panel-b {
+			padding: 10px 12px;
+		}
+
+		.legend {
+			font-size: 12px;
+			color: var(--muted);
+			margin-bottom: 6px;
+		}
+
+		label {
+			font-size: 13px;
+			display: block;
+			margin: 10px 0 6px;
+		}
+
+		input[type="text"] {
+			width: 100%;
+			padding: 12px 14px;
+			font-size: 16px;
+			border-radius: 12px;
+			border: 1px solid var(--brand2);
+			background: var(--bg2);
+			color: #e5e7eb;
+			outline: none;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 10px;
+		}
+
+		@media (max-width:520px) {
+			.grid {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+
+		@media (max-width:400px) {
+			.grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.row-actions {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			margin-top: 10px;
+			flex-wrap: wrap;
+		}
+
+		button {
+			padding: 12px 16px;
+			border-radius: 12px;
+			border: none;
+			color: white;
+			font-weight: 800;
+			cursor: pointer;
+		}
+
+		.btn-primary,
+		.btn-secondary {
+			padding: 0.5rem 1rem;
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, var(--brand1), var(--brand2));
+			flex: 1;
+			min-width: 140px;
+		}
+
+		.btn-secondary {
+			background: var(--bg2);
+			color: #e5e7eb;
+			border: 1px solid #2a2a2f;
+		}
+
+		.switch {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: 13px;
+			color: var(--muted);
+			margin-top: 2px;
+		}
+
+		.impact .box {
+			border: 1px solid #1a1a1f;
+			border-radius: 16px;
+			padding: 12px;
+			margin: 10px 0;
+			background: #1a1a1f;
+		}
+
+		.impact .lbl {
+			font-weight: 800;
+			letter-spacing: .3px;
+			font-size: 12px;
+			color: #cbd5e1;
+			margin-bottom: 6px;
+			text-transform: uppercase;
+		}
+
+		.impact .valor {
+			font-size: 34px;
+			font-weight: 900;
+			margin: 0;
+			line-height: 1;
+		}
+
+		.impact .valor.green {
+			color: var(--success);
+		}
+
+		.impact .subtxt {
+			font-size: 12px;
+			color: #a1a1aa;
+			margin-top: 4px;
+		}
+
+		.mono {
+			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+		}
+
+		.neg {
+			color: var(--danger);
+			font-weight: 700;
+		}
+
+		.summary .kpis {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 14px;
+		}
+
+		.kpi {
+			background: var(--bg2);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 12px;
+			min-height: 96px;
+		}
+
+		.kpi .label {
+			font-size: 13px;
+			color: #cbd5e1;
+			margin-bottom: 6px;
+		}
+
+		.kpi .value {
+			font-size: 22px;
+			font-weight: 900;
+			margin: 0;
+			line-height: 1;
+		}
+
+		.kpi .foot {
+			margin-top: 6px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		.kpi .pct {
+			font-size: 12px;
+			color: #22c55e;
+			font-weight: 700;
+		}
+
+		.kpi .ok {
+			width: 16px;
+			height: 16px;
+			flex: 0 0 16px;
+			display: inline-block;
+			background: #22c55e;
+			border-radius: 50%;
+			position: relative;
+		}
+
+		.kpi .ok::after {
+			content: "";
+			position: absolute;
+			left: 4px;
+			top: 2px;
+			width: 6px;
+			height: 10px;
+			border-right: 2px solid #0b1628;
+			border-bottom: 2px solid #0b1628;
+			transform: rotate(45deg);
+		}
+
+		footer {
+			text-align: center;
+			font-size: 12px;
+			color: #94a3b8;
+			margin: 18px 0 8px;
+			line-height: 1.5;
+			padding: 0 8px;
+		}
+
+		/* Gate overlay */
+		.gate-backdrop {
+			position: fixed;
+			inset: 0;
+			background: linear-gradient(180deg, var(--bg1), var(--bg2));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+		}
+
+		.gate-card {
+			width: min(92vw, 440px);
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			box-shadow: var(--shadow);
+			padding: 18px;
+		}
+
+		.gate-title {
+			font-size: 18px;
+			font-weight: 900;
+			margin: 0 0 8px;
+		}
+
+		.gate-sub {
+			font-size: 13px;
+			color: #cbd5e1;
+			margin: 0 0 10px;
+		}
+
+		.gate-row {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			margin-top: 8px;
+		}
+
+		.gate-input {
+			flex: 1;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			text-align: center;
+			font-weight: 900;
+		}
+
+		.gate-btn {
+			background: linear-gradient(135deg, var(--brand1), var(--brand2));
+		}
+
+		.gate-hint {
+			font-size: 12px;
+			color: #94a3b8;
+			margin-top: 8px;
+		}
+
+		.gate-err {
+			font-size: 12px;
+			color: #ef4444;
+			margin-top: 6px;
+			font-weight: 700;
+			display: none;
+		}
+
+		.hide {
+			display: none !important;
+		}
+
+		/* Canvas do gráfico */
+		#graficoComposicao {
+			width: 100%;
+			height: 280px;
+		}
+
+		@media (min-width: 640px) {
+			#graficoComposicao {
+				height: 340px;
+			}
+		}
+	</style>
+
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['Inter', 'sans-serif'],
+					},
+					colors: {
+						dark: {
+							900: '#09090b',
+							800: '#1a1a1f',
+							700: '#2a2a2f',
+						},
+						primary: {
+							500: '#6d28d9',
+							600: '#5b21b6',
+							700: '#4c1d95',
+						},
+					},
+				},
+			},
+		}
+	</script>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HLLTLQ1QH"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-9HLLTLQ1QH');
+	</script>
+
+	<!-- Hotjar Tracking Code for HubMaster -->
+	<script>
+		(function (h, o, t, j, a, r) {
+			h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+			h._hjSettings = { hjid: 6569645, hjsv: 6 };
+			a = o.getElementsByTagName('head')[0];
+			r = o.createElement('script'); r.async = 1;
+			r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+			a.appendChild(r);
+		})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+	</script>
+</head>
+
+<body class="antialiased bg-dark-900 text-zinc-100">
+	<header class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md border-b border-zinc-800">
+		<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between items-center h-16">
+				<div class="flex-shrink-0">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto" src="/logo-full.png" alt="HubMaster Logo">
+					</a>
+				</div>
+
+				<div class="hidden md:flex items-center space-x-6">
+					<a href="/masterlab#pilares"
+						class="text-zinc-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Os 5
+						Pilares</a>
+				</div>
+
+				<div class="md:hidden flex items-center">
+					<button id="mobile-menu-btn" type="button"
+						class="inline-flex items-center justify-center p-2 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+						aria-controls="mobile-menu" aria-expanded="false">
+						<span class="sr-only">Abrir menu principal</span>
+						<svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+						</svg>
+						<svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+							viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<div class="md:hidden hidden" id="mobile-menu">
+			<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+				<a href="#inicio"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Início</a>
+				<a href="/masterlab#pilares"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Os
+					5 Pilares</a>
+				<a href="#calculadora"
+					class="text-zinc-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Calculadora</a>
+			</div>
+		</div>
+	</header>
+
+	<main class="pt-16">
+		<!-- GATE -->
+		<div id="gate" class="gate-backdrop">
+			<div class="gate-card p-4">
+				<h2 class="gate-title">🔐 Acesso restrito</h2>
+				<p class="gate-sub">Digite seu código de 4 caracteres para desbloquear esta calculadora neste dispositivo.<br />
+					<small>Validade: 7 dias a partir da ativação.</small>
+				</p>
+				<div class="gate-row flex flex-col p-6 gap-4">
+					<input id="gate-code" class="gate-input text-dark-700 opacity-1 w-2/3 py-2 rounded-lg" maxlength="4"
+						placeholder="AB12" autocomplete="one-time-code" inputmode="latin-prose" />
+					<button id="gate-ok" class="gate-btn px-4 py-2">Desbloquear</button>
+				</div>
+				<div id="gate-err" class="gate-err">Código inválido ou expirado.</div>
+				<div class="gate-hint">Dica: o código não diferencia minúsculas e maiúsculas.</div>
+			</div>
+		</div>
+
+		<!-- APP -->
+		<div id="app" class="container hide">
+			<h1 class="app-title">Preço Certo</h1>
+			<p class="app-sub">Calculadora de Precificação Inteligente</p>
+
+			<div class="hero">
+				<div class="title">Preço Sugerido</div>
+				<div id="p-sug" class="price">R$ 0,00</div>
+				<div id="p-desc-wrap" class="alt" style="display:none;"><small>Preço c/ desconto:</small> <span id="p-desc">R$
+						0,00</span></div>
+				<div class="sub">Baseado nos parâmetros abaixo</div>
+			</div>
+
+			<section class="flex flex-wrap gap-5 justify-between">
+
+				<div class="panel md:w-2/4">
+					<div class="panel-h">Cálculo do Markup</div>
+					<div class="panel-b">
+						<div class="legend">Percentuais são aplicados sobre o preço de venda.</div>
+						<div class="grid">
+							<div><label for="custo">Custo (R$)</label><input id="custo" type="text" inputmode="decimal"
+									autocomplete="off" /></div>
+							<div><label for="despesas">Despesas (%)</label><input id="despesas" type="text" inputmode="decimal"
+									autocomplete="off" /></div>
+							<div><label for="lucro">Lucro (%)</label><input id="lucro" type="text" inputmode="decimal"
+									autocomplete="off" /></div>
+							<div><label for="aliquota">Impostos (%)</label><input id="aliquota" type="text" inputmode="decimal"
+									autocomplete="off" /></div>
+							<div><label for="comissao">Comissão (%)</label><input id="comissao" type="text" inputmode="decimal"
+									autocomplete="off" /></div>
+							<div><label for="desconto">Desconto (%)</label><input id="desconto" type="text" inputmode="decimal"
+									autocomplete="off" /></div>
+						</div>
+						<div class="row-actions">
+							<div class="switch w-full md:w-auto">
+								<input id="preservar" type="checkbox" />
+								<label for="preservar">Preservar margem após desconto</label>
+							</div>
+							<button id="calc" type="button" class="btn-primary">Calcular</button>
+							<button id="clear" type="button" class="btn-secondary">Limpar</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel md:w-1/4">
+					<div class="panel-h">Fator Markup</div>
+					<div class="panel-b">
+						<div class="hero" style="padding:4px 14px;">
+							<div class="title">Fator aplicado</div>
+							<div id="fator-val" class="price">× 1,00</div>
+							<div class="sub">Fórmula: <span class="mono">100 ÷ (100 − (Despesas + Impostos + Comissão + Lucro))</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel impact flex-1">
+					<div class="panel-h">Impacto do Desconto</div>
+					<div class="panel-b">
+						<div class="box">
+							<div class="lbl">PREÇO CALCULADO (sem desconto)</div>
+							<div class="valor mono" id="preco-sem">R$ 0,00</div>
+							<div class="subtxt">Preço antes do desconto.</div>
+						</div>
+						<div class="box">
+							<div class="lbl">PREÇO FINAL (com desconto)</div>
+							<div class="valor mono green" id="preco-com">R$ 0,00</div>
+							<div class="subtxt">Desconto aplicado ao preço calculado.</div>
+						</div>
+						<div class="box">
+							<div class="lbl">Lucro (sobre venda)</div>
+							<div class="subtxt">Sem desconto: <span class="mono" id="lucro-sv-sem">R$ 0,00</span></div>
+							<div class="subtxt">Com desconto: <span class="mono" id="lucro-sv-com">R$ 0,00</span></div>
+						</div>
+						<div class="box">
+							<div class="lbl">Lucro Real (residual)</div>
+							<div class="subtxt">Sem desconto: <span class="mono" id="lucro-real-sem">R$ 0,00</span></div>
+							<div class="subtxt">Com desconto: <span class="mono" id="lucro-real-com">R$ 0,00</span></div>
+							<div class="subtxt">Redução do lucro: <span class="mono neg" id="lucro-reducao">R$ 0,00</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="flex gap-6 w-full flex-wrap">
+					<div class="panel summary flex-1" id="sum-panel">
+						<div class="panel-h">Análise do Preço Sugerido</div>
+						<div class="panel-b">
+							<div class="kpis">
+								<div class="kpi">
+									<div class="label">Custo do Produto</div>
+									<div class="value mono" id="sum-custo">R$ 0,00</div>
+									<div class="foot"><span class="pct" id="sum-custo-p">0%</span><span class="ok"></span></div>
+								</div>
+								<div class="kpi">
+									<div class="label">Despesas</div>
+									<div class="value mono" id="sum-desp">R$ 0,00</div>
+									<div class="foot"><span class="pct" id="sum-desp-p">0%</span><span class="ok"></span></div>
+								</div>
+								<div class="kpi">
+									<div class="label">Impostos</div>
+									<div class="value mono" id="sum-imp">R$ 0,00</div>
+									<div class="foot"><span class="pct" id="sum-imp-p">0%</span><span class="ok"></span></div>
+								</div>
+								<div class="kpi">
+									<div class="label">Lucro Líquido</div>
+									<div class="value mono" id="sum-lucro">R$ 0,00</div>
+									<div class="foot"><span class="pct" id="sum-lucro-p">0%</span><span class="ok"></span></div>
+								</div>
+								<div class="kpi">
+									<div class="label">Comissão</div>
+									<div class="value mono" id="sum-comiss">R$ 0,00</div>
+									<div class="foot"><span class="pct" id="sum-comiss-p">0%</span><span class="ok"></span></div>
+								</div>
+								<div class="kpi">
+									<div class="label">Desconto</div>
+									<div class="value mono" id="sum-desc">R$ 0,00</div>
+									<div class="foot"><span class="pct" id="sum-desc-p">0%</span><span class="ok"></span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel ">
+						<div class="panel-h">Gráfico de Composição do Preço</div>
+						<div class="panel-b">
+							<canvas id="graficoComposicao"></canvas>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		</div>
+		<section id="autor" class="py-20 sm:py-28 bg-zinc-900/70">
+			<div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+				<h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12">Desenvolvida por</h2>
+				<img class="w-40 h-40 rounded-full mx-auto border-4 border-purple-600 shadow-lg object-cover"
+					src="/masterlab/autor-eduardo.jpg" alt="Foto de Eduardo Pires">
+				<div class="mt-6 text-3xl font-bold text-white">Eduardo Pires</div>
+				<p class="mt-4 text-lg text-zinc-300">
+					Bacharel em Ciências Contábeis, Analista de Dados, CEO da E‑Tech Sistemas e sócio administrativo da
+					HubMaster.
+				</p>
+				<p class="mt-4 text-zinc-400">
+					Há mais de 15 anos ajudando empresas a aumentarem eficiência, controle e lucratividade por meio de
+					dados e
+					tecnologia.
+				</p>
+				<div class="mt-10 flex justify-center items-center gap-10 flex-wrap">
+					<img src="/masterlab/logo-etech.png" alt="E‑Tech Sistemas" class="h-14">
+					<img src="/masterlab/logo-hubmaster.png" alt="HubMaster" class="h-14">
+				</div>
+				<div class="mt-10 flex flex-wrap justify-center gap-4">
+					<a href="https://wa.me/5575999553626" target="_blank" rel="noopener"
+						class="inline-flex items-center px-5 py-2 border border-zinc-700 text-sm font-semibold rounded-lg text-zinc-300 bg-zinc-800/50 hover:bg-zinc-800 transition-colors">
+						WhatsApp
+					</a>
+
+				</div>
+				<p class="mt-8 text-sm text-zinc-500">
+					© 2025 — Eduardo Pires | E‑Tech Sistemas & HubMaster — Todos os direitos reservados.
+				</p>
+			</div>
+		</section>
+	</main>
+	<footer class="py-12 border-t border-zinc-800">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+				<div class="text-center md:text-left">
+					<a href="/" title="HubMaster">
+						<img class="h-8 w-auto mx-auto md:mx-0" src="/logo-full.png" alt="HubMaster Logo">
+					</a>
+					<p class="mt-3 text-sm text-zinc-500">
+						&copy; 2025 MasterLab - Academy para Revendas de Software.
+					</p>
+				</div>
+				<p class="text-sm text-zinc-400">Parte da plataforma <strong>HubMaster</strong> - A Central de
+					Comando da sua Revenda.</p>
+			</div>
+		</div>
+	</footer>
+	<script>
+		// ===== Utilitários de formatação =====
+		function $(id) { return document.getElementById(id); }
+		function fmt(v) {
+			try { return isFinite(v) ? Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'R$ 0,00'; }
+			catch (e) { return 'R$ ' + (Math.round((+v || 0) * 100) / 100).toFixed(2).replace('.', ','); }
+		}
+		function fmtBRNum(n, dec = 2) {
+			if (!isFinite(n)) n = 0;
+			try { return Number(n).toLocaleString('pt-BR', { minimumFractionDigits: dec, maximumFractionDigits: dec }); }
+			catch (e) { return (Math.round((+n || 0) * 10 ** dec) / 10 ** dec).toFixed(dec).replace('.', ','); }
+		}
+		function toNum(s) {
+			s = String(s == null ? '' : s).replace(/\\s+/g, '').replace(/[^0-9,\\.\\-]/g, '');
+			const parts = s.split(/[.,]/);
+			if (parts.length > 1) { const dec = parts.pop(); s = parts.join('') + '.' + dec; }
+			else { s = s.replace(',', '.'); }
+			const n = parseFloat(s);
+			return isNaN(n) ? 0 : n;
+		}
+		function val(p, pc) { return p * (pc / 100); }
+
+		// ===== Gráfico leve (sem libs externas) =====
+		(function () {
+			const COLORS = ['#3b82f6', '#8b5cf6', '#22c55e', '#eab308', '#f97316', '#ef4444'];
+			function drawPie(ctx, values, labels) {
+				const total = values.reduce((a, b) => a + (isFinite(b) ? b : 0), 0) || 1;
+				const dpr = window.devicePixelRatio || 1;
+				const w = ctx.canvas.clientWidth, h = ctx.canvas.clientHeight;
+				ctx.canvas.width = Math.floor(w * dpr);
+				ctx.canvas.height = Math.floor(h * dpr);
+				ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+				ctx.clearRect(0, 0, w, h);
+				const r = Math.min(w, h) * 0.42;
+				const cx = w * 0.5, cy = h * 0.5;
+				let ang = -Math.PI / 2;
+				values.forEach((v, i) => {
+					const frac = (isFinite(v) && v > 0) ? v / total : 0;
+					const a2 = ang + frac * Math.PI * 2;
+					ctx.beginPath(); ctx.moveTo(cx, cy);
+					ctx.arc(cx, cy, r, ang, a2, false); ctx.closePath();
+					ctx.fillStyle = COLORS[i % COLORS.length]; ctx.fill();
+					ctx.strokeStyle = '#09090b'; ctx.lineWidth = 1.2; ctx.stroke();
+					ang = a2;
+				});
+				ctx.font = '12px system-ui, -apple-system, Segoe UI, Roboto, Arial';
+				ctx.textBaseline = 'middle';
+				let lx = 12, ly = 14;
+				labels.forEach((lab, i) => {
+					ctx.fillStyle = COLORS[i % COLORS.length];
+					ctx.fillRect(lx, ly - 6, 10, 10);
+					ctx.fillStyle = '#e5e7eb';
+					const pct = Math.round((values[i] / total) * 1000) / 10 || 0;
+					ctx.fillText(lab + ' (' + pct + '%)', lx + 16, ly);
+					ly += 18;
+				});
+			}
+			window.__drawGrafico = function (pctCusto, pctDesp, pctImp, pctLucro, pctComiss, pctDesc) {
+				const cv = document.getElementById('graficoComposicao'); if (!cv) return;
+				const ctx = cv.getContext('2d');
+				const vals = [pctCusto, pctDesp, pctImp, pctLucro, pctComiss, pctDesc].map(v => (isFinite(v) && !isNaN(v) ? v : 0));
+				const labels = ['Custo', 'Despesas', 'Impostos', 'Lucro', 'Comissão', 'Desconto'];
+				drawPie(ctx, vals, labels);
+			};
+		})();
+
+		// ===== Cálculo =====
+		function atualizarGrafico(pctCusto, pctDesp, pctImp, pctLucro, pctComiss, pctDesc) {
+			// Compat: mantido se precisar no futuro
+		}
+		function calcular() {
+			const custo = toNum($('custo').value);
+			const despesas = toNum($('despesas').value);
+			const lucro = toNum($('lucro').value);
+			const impostos = toNum($('aliquota').value);
+			const comissao = toNum($('comissao').value);
+			const desconto = toNum($('desconto').value);
+			const preservar = $('preservar').checked;
+			const soma = despesas + lucro + impostos + comissao;
+			if (soma >= 100) { alert('A soma de despesas + impostos + lucro + comissão não pode ser ≥ 100%.'); return; }
+			const mult = 100 / (100 - soma || 1);
+			try { document.getElementById('fator-val').textContent = '× ' + fmtBRNum(mult, 3); } catch (e) { }
+			const precoSemDescBase = custo * mult;
+			let precoCalc, precoFinal;
+			if (preservar) {
+				precoFinal = precoSemDescBase;
+				const fator = 1 - (desconto / 100);
+				precoCalc = fator > 0 ? (precoFinal / fator) : precoFinal;
+			} else {
+				precoCalc = precoSemDescBase;
+				precoFinal = precoCalc * (1 - desconto / 100);
+			}
+			const dCalc = val(precoCalc, despesas);
+			const iCalc = val(precoCalc, impostos);
+			const cCalc = val(precoCalc, comissao);
+			const lSobreCalc = val(precoCalc, lucro);
+			const lucroRealSem = precoCalc - custo - dCalc - iCalc - cCalc;
+			const dFinal = val(precoFinal, despesas);
+			const iFinal = val(precoFinal, impostos);
+			const cFinal = val(precoFinal, comissao);
+			const lucroRealCom = precoFinal - custo - dFinal - iFinal - cFinal;
+			const reducao = Math.max(0, lucroRealSem - lucroRealCom);
+			const lucroEfetivoCom = lucroRealCom;
+			$('p-sug').textContent = fmt(precoCalc);
+			const wrap = $('p-desc-wrap');
+			if ((desconto || 0) > 0) { wrap.style.display = 'block'; $('p-desc').textContent = fmt(precoFinal); } else { wrap.style.display = 'none'; }
+			$('preco-sem').textContent = fmt(precoCalc);
+			$('preco-com').textContent = fmt(precoFinal);
+			$('lucro-sv-sem').textContent = fmt(lSobreCalc);
+			$('lucro-sv-com').textContent = fmt(lucroEfetivoCom);
+			$('lucro-real-sem').textContent = fmt(lucroRealSem);
+			$('lucro-real-com').textContent = fmt(lucroRealCom);
+			$('lucro-reducao').textContent = fmt(reducao);
+			const pc = precoCalc || 0.000001;
+			const pctCusto = (custo / pc) * 100;
+			const pctDesp = (dCalc / pc) * 100;
+			const pctImp = (iCalc / pc) * 100;
+			const pctLucro = lucro;
+			const pctComiss = comissao;
+			const pctDesc = desconto;
+			$('sum-custo').textContent = fmt(custo);
+			$('sum-desp').textContent = fmt(dCalc);
+			$('sum-imp').textContent = fmt(iCalc);
+			$('sum-lucro').textContent = fmt(lSobreCalc);
+			$('sum-comiss').textContent = fmt(cCalc);
+			$('sum-desc').textContent = fmt(pc * (desconto / 100));
+			$('sum-custo-p').textContent = pctCusto.toFixed(1) + '%';
+			$('sum-desp-p').textContent = pctDesp.toFixed(1) + '%';
+			$('sum-imp-p').textContent = pctImp.toFixed(1) + '%';
+			$('sum-lucro-p').textContent = pctLucro.toFixed(1) + '%';
+			$('sum-comiss-p').textContent = pctComiss.toFixed(1) + '%';
+			$('sum-desc-p').textContent = pctDesc.toFixed(1) + '%';
+			// $('sum-panel').style.display = (precoCalc > 0) ? 'block' : 'none';
+			__drawGrafico(pctCusto, pctDesp, pctImp, pctLucro, pctComiss, pctDesc);
+		}
+		function limpar() {
+			['custo', 'despesas', 'lucro', 'aliquota', 'comissao', 'desconto'].forEach(id => $(id).value = '');
+			$('preservar').checked = false;
+			calcular();
+		}
+
+		// ===== GATE (LocalStorage, 7 dias, 1 dispositivo) =====
+		(function () {
+			const KEY = 'precoCertoLicense';
+			const VALID_FOR_MS = 7 * 24 * 60 * 60 * 1000;
+			const ALLOWED = new Set(["A3KF", "B7QX", "C4ZD", "D6PR", "E9MT", "F2VG", "G8HW", "H5NL", "J7RU", "K9YP", "L3QT", "M4SA", "N6BW", "P8LX", "Q2GF", "R5KE", "S9UD", "T7CM", "U4XR", "V8HJ", "W6TN", "X3PA", "Y5DZ", "Z9KW", "A7RM", "B4JS", "C6HV", "D3PU", "E8LG", "F9QW", "G2SN", "H4BY", "J8MC", "K5RA", "L7FU", "M9TX", "N3QK", "P6WD", "Q8HL", "R2MG", "S7PC", "T4YX", "U9FV", "V6BD", "W8RJ", "X2CP", "Y4HW", "Z7QS", "A9DV", "B5TM", "C2XR", "D8GL", "E6FN", "F3KD", "G9UP", "H7QZ", "J4SW", "K8VM", "L6PN", "M2YX", "N5GQ", "P9HR", "Q4JT", "R8CW", "S6DA", "T3LK", "U7ZE", "V5QP", "W9FS", "X6NV", "Y2BR", "Z8HM", "A5XQ", "B6CU", "C9TK", "D4JG", "E7PV", "F8RL", "G3MD", "H6SK", "J5WY", "K2NZ", "L8BC", "M7XE", "N4UF", "P6QJ", "Q9HL", "R3VA", "S8MP", "T5DG", "U2CW", "V9KT", "W4YR", "X7SJ", "Y3UF", "Z6PA"]);
+			function now() { return Date.now(); }
+			function load() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (_) { return null; } }
+			function save(obj) { localStorage.setItem(KEY, JSON.stringify(obj)); }
+			function clear() { localStorage.removeItem(KEY); }
+			function isValid(rec) {
+				if (!rec || !rec.code || !rec.activatedAt) return false;
+				const expired = (now() - rec.activatedAt) > VALID_FOR_MS;
+				return !expired && ALLOWED.has((rec.code || '').toUpperCase());
+			}
+			function showApp() { document.getElementById('gate').classList.add('hide'); document.getElementById('app').classList.remove('hide'); }
+			function showGate() { document.getElementById('gate').classList.remove('hide'); document.getElementById('app').classList.add('hide'); }
+
+			document.addEventListener('DOMContentLoaded', function () {
+				const gc = document.getElementById('gate-code');
+				if (gc) gc.focus();
+
+				const rec = load();
+				if (rec && isValid(rec)) { showApp(); } else { showGate(); }
+
+				document.getElementById('gate-ok').addEventListener('click', function () {
+					const code = (gc.value || '').trim().toUpperCase();
+					if (ALLOWED.has(code)) {
+						const obj = { code, activatedAt: now() };
+						save(obj); showApp();
+					} else {
+						const e = document.getElementById('gate-err'); e.style.display = 'block'; e.textContent = 'Código inválido.';
+					}
+				});
+				gc.addEventListener('keyup', function (ev) { if (ev.key === 'Enter') document.getElementById('gate-ok').click(); });
+
+				// Wire calc
+				['custo', 'despesas', 'lucro', 'aliquota', 'comissao', 'desconto'].forEach(id => document.getElementById(id).addEventListener('input', calcular));
+				document.getElementById('preservar').addEventListener('change', calcular);
+				document.getElementById('calc').addEventListener('click', calcular);
+				document.getElementById('clear').addEventListener('click', limpar);
+				calcular();
+
+				// Guard de expiração periódico
+				setInterval(function () {
+					const r = load();
+					if (!isValid(r)) {
+						clear(); showGate();
+					}
+				}, 60000);
+			});
+		})();
+	</script>
+</body>
+
+</html>
