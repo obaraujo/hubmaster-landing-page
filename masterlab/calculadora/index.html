@@ -248,7 +248,6 @@
 
 		.summary .kpis {
 			display: grid;
-			grid-template-columns: repeat(3, minmax(160px, 1fr));
 			gap: 14px;
 		}
 
@@ -597,7 +596,7 @@
 					<div class="panel summary flex-1" id="sum-panel">
 						<div class="panel-h">Análise do Preço Sugerido</div>
 						<div class="panel-b">
-							<div class="kpis">
+							<div class="kpis  grid-cols-2 md:grid-cols-3">
 								<div class="kpi">
 									<div class="label">Custo do Produto</div>
 									<div class="value mono" id="sum-custo">R$ 0,00</div>
